@@ -1,0 +1,159 @@
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel='stylesheet'
+          media='screen,print'>
+    <style>
+        html,
+        body {
+            font-family: 'Reddit Sans';
+            height: 100%;
+            width: 100%;
+        }
+
+        table {
+            margin: 0 !important;
+            border-radius: 6px!important;
+            border-collapse: separate!important;
+        }
+
+            table tr td {
+                font-size: 13px;
+            }
+
+            table tr th {
+                font-size: 13px;
+            }
+
+            table:not(.table-min-none) tr td:not(.stt),
+            table:not(.table-min-none) tr th:not(.stt) {
+                min-width: 120px;
+            }
+
+            table tr th {
+                vertical-align: middle !important;
+                text-align: center;
+            }
+
+                table tr td.stt,
+                table tr th.stt {
+                    width: 1%;
+                    white-space: nowrap;
+                    text-align: center;
+                }
+
+            table ul {
+                padding-left: 10px;
+            }
+
+        .table-bordered {
+            border: 0.5px solid #312b2b;
+        }
+            .table>thead:first-child>tr:first-child {
+                border-radius: 6px 0 0 0;
+                border-top: 0.5px solid #312b2b;
+            }
+            .table-bordered > thead > tr > th {
+                background-color: #F2F4F9;
+            }
+            .table>thead:first-child>tr:first-child>th:first-child {
+                border-radius: 6px 0 0 0;
+            }
+            .table>thead:first-child>tr:first-child>th:last-child {
+                border-radius: 0 6px 0 0;
+            }
+            .table>tbody>tr:last-child>td:first-child {
+                border-radius: 0 0 0 6px;
+            }
+            .table>tbody>tr:last-child>td:last-child {
+                border-radius: 0 0 6px 0;
+            }
+            .table-bordered > tbody > tr > td,
+            .table-bordered > tbody > tr > th,
+            .table-bordered > tfoot > tr > td,
+            .table-bordered > tfoot > tr > th,
+            .table-bordered > thead > tr > td,
+            .table-bordered > thead > tr > th {
+                border: 0.5px solid #312b2b;
+            }
+
+        tr td[rowspan] {
+            vertical-align: middle !important;
+            text-align: center !important;
+        }
+
+        .report-header {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .report-content table tr td,
+        .report-content table tr th {
+            font-size: 13px;
+        }
+
+            .report-content table tr th:first-child {
+                width: 50px;
+            }
+
+        .container-table {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-table">
+        <div class="text-center" style="height:80px;">
+            <h3 style="text-transform: uppercase;">
+                {{#if title}}
+                <b>{{title}}</b>
+                {{else}}
+                <b>BÁO CÁO {{ layer.name_vn }}</b>
+                {{/if}}
+            </h3>
+            <p style="margin-top:5px;font-size:16px">
+                <i>(Tổng số {{ layer.name_vn  }}: {{ totalCount  }})</i>
+            </p>
+        </div>
+        <div style="height:calc(100% - 130px);padding:10px;">
+            <table class="table table-bordered" border="1">
+                <thead>
+                    <tr>
+                        <th class='stt'>STT</th>
+                        {{#selectedColumns}}
+                        <th>{{ name_vn }}</th>
+                        {{/selectedColumns}}
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#if groupCount}}
+                    {{#groupCount}}
+                    <tr>
+                        <td colspan="{{ @root.selectedColumns.length }}" style="padding-left: {{ increment (multiply @index 10) 5 }}px"><strong>{{.}}</strong></td>
+                    </tr>
+                    {{/groupCount}}
+                    {{/if}}
+                    {{#result}}
+                    <tr>
+                        <td class="stt">
+                            {{counter}}
+                        </td>
+                        {{#.}}
+                        <td>
+                            {{.}}
+                        </td>
+                        {{/.}}
+                    </tr>
+                    {{/result}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

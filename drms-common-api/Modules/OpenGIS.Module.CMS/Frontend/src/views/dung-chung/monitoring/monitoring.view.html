@@ -1,0 +1,143 @@
+<div class="main-inner-map">
+    <div class="wrap-col-lft">
+        <div class="col-lft-navi">
+            <div class="map-front-header">
+                <div class="header-title">
+                    <div class="logo">
+                        <img src="@VietGIS.Infrastructure.GlobalConfiguration.ApplicationLogo" alt="" />
+                    </div>
+                    <div class="title">
+                        <h6>@VietGIS.Infrastructure.GlobalConfiguration.ApplicationName</h6>
+                        <h6 class="parent-module"></h6>
+                    </div>
+                </div>
+                <div class="header-menu"></div>
+            </div>
+            <div class="map-front-top">
+                <div class="map-top">
+                    <!--<nav class="map-navigation">-->
+                    <nav class="map-navigations">
+                        <ul class="nav nav-tabs" id="tabs-map">
+                            <li>
+                                <a href="javascript:;" title="Danh sách hành chính" class="handle-administrative">
+                                    <i class="icon icon-data"></i>
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="javascript:;" title="Lớp dữ liệu" class="handle-layer" id="btnTabLayer">
+                                    <i class="icon icon-layer"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" title="Tìm kiếm" class="handle-search">
+                                    <i class="icon icon-search-normal-1"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" title="Kế hoạch duy tu, duy trì">
+                                    <i class="icon icon-grid-4"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" title="Vận hành, kiểm tra">
+                                    <i class="icon icon-main-component"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-tabs nav-tabs-bottom" id="tabs-navigate">
+                            @(await Html.PartialAsync("_UserNav"))
+                            <li>
+                                <a href="/dung-chung" title="Quay lại">
+                                    <i class="icon icon-undo"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/" title="Trang chủ">
+                                    <i class="icon icon-home-2"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!--end map-front-top-->
+            <div class="col-lft-navi-inner">
+                <div class="tab-content">
+                    <div class="tab-pane fade" id="fragment-1">
+                        <div class="top-heading-wrap">
+                            <div class="top-heading">
+                                <span>Danh sách hành chính</span>
+                                <a class="close-btn" href="javascript:;">
+                                    <i class="icon icon-close-circle"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="tab-pane-inner-scroll" id="regionContainer"></div>
+                    </div>
+                    <!--end accordion-sidebar-->
+                    <!--end fragment-1-->
+                    <div class="tab-pane fade show active" id="fragment-2">
+                        <div class="top-heading-wrap">
+                            <div class="top-heading">
+                                <span>Lớp dữ liệu</span>
+                                <a class="close-btn" href="javascript:;">
+                                    <i class="icon icon-close-circle"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="tab-pane-inner-scroll" id="layerTreeContainer"></div>
+                    </div>
+                    <div class="tab-pane fade" id="fragment-3">
+                        <div class="top-heading-wrap">
+                            <div class="top-heading">
+                                <span>Tìm kiếm</span>
+                                <a class="close-btn" href="javascript:;">
+                                    <i class="icon icon-close-circle"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="tab-pane-inner-scroll" id="search-box-container"></div>
+                    </div>
+                    <!--end fragment-3-->
+                    <div class="tab-pane fade" id="fragment-4">
+                        <div class="top-heading-wrap">
+                            <div class="top-heading">
+                                <span>Kế hoạch duy tu, duy trì</span>
+                                <a class="close-btn" href="javascript:;">
+                                    <i class="icon icon-close-circle"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="tab-pane-inner-scroll" id="maintenancePlanContainer"></div>
+                    </div>
+                    <!--end fragment-4-->
+                    <div class="tab-pane fade" id="fragment-5">
+                        <div class="top-heading-wrap">
+                            <div class="top-heading">
+                                <span>Vận hành, kiểm tra</span>
+                                <a class="close-btn" href="javascript:;">
+                                    <i class="icon icon-close-circle"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="tab-pane-inner-scroll" id="maintenanceContainer"></div>
+                    </div>
+                    <!--end fragment-5-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrap-col-main">
+        <div class="col-main-map">
+            <div class="col-main-map-inner">
+                <div id="map"></div>
+                <!--end col-main-map-->
+            </div>
+            <!--end wrap-col-main-->
+        </div>
+        <!--end main-inner-map-->
+    </div>
+</div>
+
+@section styles { <%= htmlWebpackPlugin.tags.headTags %> }
+    @section scripts {<%= htmlWebpackPlugin.tags.bodyTags %>}

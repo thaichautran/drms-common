@@ -1,0 +1,101 @@
+/*************************************
+**************************************
+Layout
+**************************************
+**************************************/
+
+#region-main {
+  @include clearfix();
+  margin: 0;
+  clear: both;
+  width: 100%;
+}
+
+.wrap-col-left {
+  position: relative;
+  z-index: 3;
+  float: left;
+  @media screen and (max-width: 640px) {
+    float: none;
+  }
+}
+
+.wrap-col-right {
+  position: relative;
+  z-index: 1;
+  float: right;
+  @media screen and (max-width: 640px) {
+    float: none;
+  }
+}
+
+.column-left .wrap-col-main {
+  width: 100%;
+  float: right;
+  @media screen and (max-width: 640px) {
+    float: none;
+  }
+}
+
+.column-rnavi .wrap-col-main {
+  width: 100%;
+  float: left;
+  @media screen and (max-width: 640px) {
+    float: none;
+  }
+}
+.column-distance{
+  #region-main{
+    padding: 3rem 0 2rem;
+  }
+}
+.col-main-inner {
+  padding: 0;
+}
+
+.define-child .wrap-col-left {
+  width: 255px;
+  margin-right: -255px;
+  @media screen and (max-width: 640px) {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+.define-child .col-left-inner {
+  color: map-get($global-color, b);
+  background-color: map-get($global-color, a);
+}
+
+.define-child .wrap-col-right {
+  width: 250px;
+  @media screen and (max-width: 640px) {
+    width: 100%;
+  }
+}
+
+.define-child .col-right-inner {
+  color: map-get($global-color, b);
+  background-color: map-get($global-color, a);
+}
+
+.define-child .column-left .col-main-inner {
+  margin-left: 255px;
+  @media screen and (max-width: 640px) {
+    margin-left: 0;
+  }
+}
+
+.define-child .column-rnavi .wrap-col-main {
+  margin-right: -290px;
+  @media screen and (max-width: 640px) {
+    margin-right: 0;
+  }
+}
+
+.define-child .column-rnavi .col-main-inner {
+  margin-right: 290px;
+  @media screen and (max-width: 640px) {
+    margin-right: 0;
+  }
+}

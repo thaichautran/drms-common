@@ -1,0 +1,244 @@
+@{
+    Layout = null;
+}
+@using System.Data;
+@using System.Linq;
+@using Dapper;
+@using System.Globalization;
+@using OpenGIS.Module.Core.ViewModels;
+@model IEnumerable<OpenGIS.Module.Core.ViewModels.BaoCaoSoLieuChieuSangTheoTuyenViewModel>;
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel='stylesheet' media='screen,print'>
+    <style>
+        html,
+        body {
+            font-family: "Reddit Sans", "Helvetica Neue", "Segoe UI", "helvetica", "verdana", "sans-serif";
+        }
+
+        table {
+            margin: 0 !important;
+            position: relative;
+            border-collapse: separate;
+            border: 1px solid #000;
+        }
+
+        table tr td {
+            font-size: 11px;
+        }
+
+        table tr th {
+            font-size: 11px;
+        }
+
+        table:not(.table-min-none) tr td:not(.stt),
+        table:not(.table-min-none) tr th:not(.stt) {
+            min-width: 150px;
+        }
+
+        table thead {
+            background: white;
+            position: sticky;
+            top: 0;
+            border: 1px solid #000 !important;
+            z-index: 100;
+        }
+
+        table thead th {
+            border: 1px solid #000 !important;
+            vertical-align: middle !important;
+            text-align: center;
+            font-weight: bolder;
+        }
+
+        table tr td.stt,
+        table tr th.stt {
+            width: 50px;
+            white-space: nowrap;
+            text-align: center;
+            width: 50px;
+            min-width: 50px;
+            max-width: 50px;
+            left: 0px;
+            position: -webkit-sticky;
+            position: sticky;
+            border: 1px solid #000 !important;
+            background-color:white;
+            z-index: 99;
+        }
+
+        table ul {
+            padding-left: 10px;
+        }
+
+        .table-bordered {
+            border: 1px solid #000;
+        }
+
+        .table-bordered>tbody>tr>td,
+        .table-bordered>tbody>tr>th,
+        .table-bordered>tfoot>tr>td,
+        .table-bordered>tfoot>tr>th,
+        .table-bordered>thead>tr>td,
+        .table-bordered>thead>tr>th {
+            border: 1px solid #000 !important;
+        }
+
+        tr td[rowspan] {
+            vertical-align: middle !important;
+            text-align: center !important;
+        }
+
+        .report-header {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .second-col {
+            width: 150px;
+            min-width: 150px;
+            max-width: 150px;
+            left: 50px;
+            position: -webkit-sticky;
+            position: sticky;
+            background-color:white;
+            border: 1px solid #000 !important;
+            z-index: 99;
+        }
+
+        .report-content table tr td,
+        .report-content table tr th {
+            font-size: 11px;
+        }
+
+        .report-content table tr th:first-child {
+            width: 50px;
+        }
+
+        .container-table {
+            width: 100%;
+            /*height: 89%;
+            overflow: auto;*/
+        }
+
+        p {
+            margin: unset;
+            text-align: right !important;
+        }
+
+        p.sum {
+            font-weight: bold;
+        }
+
+        p.sum-child {
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .font-weight-bolder {
+            font-weight: bolder;
+        }
+
+        .group-td {
+            @* background-color: #05478d; *@
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="text-center">
+        <h3 style="text-transform: uppercase;">
+            <b> BÁO CÁO TỔNG HỢP SỐ LIỆU THEO TUYẾN CHIẾU SÁNG</b>
+            <br>
+            <b> THÀNH PHỐ HÀ NỘI</b>
+        </h3>
+        <span style="font-style: italic;"> Ngày @DateTime.Now.ToString("dd/MM/yyyy")</span>
+    </div>
+    <div class="container-table" style="margin-top: 10px;">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="stt" rowspan="2">STT</th>
+                    <th class="second-col" rowspan="2">Tên tuyến</th>
+                    <th colspan="2">Chiều dài tuyến (m)</th>
+                    <th colspan="2">Số bộ đèn</th>
+                    <th colspan="2">Số cột đèn</th>
+                    @* <th colspan="2">Số trạm đèn</th> *@
+                </tr>
+                <tr>
+                    <th>Sở quản lý</th>
+                    <th>Quận quản lý</th>
+                    <th>Sở quản lý</th>
+                    <th>Quận quản lý</th>
+                    <th>Sở quản lý</th>
+                    <th>Quận quản lý</th>
+                    @* <th>Sở quản lý</th>
+                    <th>Quận quản lý</th> *@
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var index = 0;
+                    var childIndex = 0;
+                    var groups = @Model.GroupBy(x => x.district).Select(x => new {
+                        district = x.Key,
+                        raw = x,
+                        items = x.GroupBy(y => y.tentuyen).Select(y => new {
+                            tentuyen = y.Key,
+                            raw = y
+                        })
+                    });
+                    <tr>
+                        <td class="stt"></td>
+                        <td class="second-col font-weight-bolder">TỔNG</td>
+                        <td class="text-right font-weight-bolder">@Model.Where(x => x.table_name == "chieudaituyen").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        <td class="text-right font-weight-bolder">@Model.Where(x => x.table_name == "chieudaituyen").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        <td class="text-right font-weight-bolder">@Model.Where(x => x.table_name == "boden").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        <td class="text-right font-weight-bolder">@Model.Where(x => x.table_name == "boden").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        <td class="text-right font-weight-bolder">@Model.Where(x => x.table_name == "cotden").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        <td class="text-right font-weight-bolder">@Model.Where(x => x.table_name == "cotden").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        @* <td class="text-right font-weight-bolder">@Model.Where(x => x.table_name == "tramden").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        <td class="text-right font-weight-bolder">@Model.Where(x => x.table_name == "tramden").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td> *@
+                    </tr>
+                    foreach (var group in groups)
+                    {
+                        <tr>
+                            <td class="stt">@(++index)</td>
+                            <td class="second-col font-weight-bolder">@(group.district ?? "Không xác định") </td>
+                            <td class="text-right font-weight-bolder">@group.raw.Where(x => x.table_name == "chieudaituyen").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@group.raw.Where(x => x.table_name == "chieudaituyen").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@group.raw.Where(x => x.table_name == "boden").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@group.raw.Where(x => x.table_name == "boden").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@group.raw.Where(x => x.table_name == "cotden").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@group.raw.Where(x => x.table_name == "cotden").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            @* <td class="text-right font-weight-bolder">@group.raw.Where(x => x.table_name == "tramden").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@group.raw.Where(x => x.table_name == "tramden").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td> *@
+                        </tr>
+                        foreach (var child in group.items)
+                        {
+                            <tr>
+                                <td class="stt">@(index + "." + (++childIndex))</td>
+                                <td class="second-col">@(child.tentuyen ?? "Không xác định")</td>
+                                <td class="text-right font-weight-bolder">@child.raw.Where(x => x.table_name == "chieudaituyen").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                                <td class="text-right font-weight-bolder">@child.raw.Where(x => x.table_name == "chieudaituyen").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                                <td class="text-right font-weight-bolder">@child.raw.Where(x => x.table_name == "boden").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                                <td class="text-right font-weight-bolder">@child.raw.Where(x => x.table_name == "boden").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                                <td class="text-right font-weight-bolder">@child.raw.Where(x => x.table_name == "cotden").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                                <td class="text-right font-weight-bolder">@child.raw.Where(x => x.table_name == "cotden").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                                @* <td class="text-right font-weight-bolder">@child.raw.Where(x => x.table_name == "tramden").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                                <td class="text-right font-weight-bolder">@child.raw.Where(x => x.table_name == "tramden").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td> *@
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

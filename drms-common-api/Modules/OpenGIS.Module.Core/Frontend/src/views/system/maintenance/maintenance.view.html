@@ -1,0 +1,57 @@
+﻿@section Headers { @(await Html.PartialAsync("_Headers")) }
+<div class="main-inner-map">
+    <div class="wrap-col-lft">
+        <div class="col-lft-navi">
+            <div class="map-front-top">
+                <div class="map-top">
+                    <!--<nav class="map-navigation">-->
+                    <nav class="map-navigations">
+                        <ul class="nav nav-tabs" id="tabs-sidebar" role="tablist">
+                            <li class="nav-item active" role="presentation">
+                                <a href="#work-content" data-toggle="tab" data-bs-target="#maintenance-content" role="tab" title="Công việc kiểm tra">
+                                    <i class="icon icon-main-component"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-tabs nav-tabs-bottom" id="tabs-navigate">
+                            @(await Html.PartialAsync("_UserNav"))
+                            <li>
+                                <a href="/system" title="Quay lại">
+                                    <i class="icon icon-undo"></i>
+                                </a>
+                            </li>
+                            <!-- <li>
+                                <a href="javascript:;" title="Chuyển nhanh module" class="switch-module-action switch-module">
+                                    <i class="icon icon-command"></i>
+                                </a>
+                            </li> -->
+                            <li>
+                                <a href="/" title="Trang chủ">
+                                    <i class="icon icon-home-2"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!--end map-front-top-->
+        </div>
+    </div>
+    <div class="wrap-col-main">
+        <div class="col-main-map">
+            <div class="col-main-map-inner">
+                <div class="col-lft-navi-inner">
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="maintenance-content" role="tabpanel">
+                            <div class="tab-item-container" id="maintenance-container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end wrap-col-main-->
+        </div>
+        <!--end main-inner-map-->
+    </div>
+</div>
+@section styles { <%= htmlWebpackPlugin.tags.headTags %> }
+@section scripts {<%= htmlWebpackPlugin.tags.bodyTags %>}

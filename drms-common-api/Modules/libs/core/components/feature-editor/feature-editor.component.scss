@@ -1,0 +1,26 @@
+.feature-editor-toolbar {
+    /*border-bottom: 1px solid #ddd;*/
+
+    .dx-button-mode-text.dx-button {
+        border-radius: 0 !important;
+    }
+
+    .dx-button-mode-text .dx-icon {
+        color: #333;
+    }
+}
+
+.feature-editor-layer-list {
+    .dx-texteditor.dx-editor-outlined {
+        border-left-width: 0;
+        border-right-width: 0;
+        border-radius: 0;
+    }
+}
+
+.feature-editor-layer-list,
+.snap-toolbar {
+    .dx-treeview-node {
+        padding-left: 0 !important;
+    }
+}

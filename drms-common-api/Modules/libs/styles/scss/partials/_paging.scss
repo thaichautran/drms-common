@@ -1,0 +1,259 @@
+/*************************************
+**************************************
+These are the styles for
+the paging section
+**************************************
+**************************************/
+.section-paging {
+  @include clearfix();
+  margin-bottom: 20px;
+  padding-top: 0;
+  .result-heading,
+  .pagination-wrap{
+    float: left;
+    width: 50%;
+    @media screen and (max-width: 767px) {
+      float: none;
+      width: 100%;
+    }
+  }
+  .result-heading{
+    margin: 0;
+    padding-right: 10px;
+    @media screen and (max-width: 767px) {
+      padding-right: 0;
+    }
+  }
+  .pagination-wrap{
+    padding-left: 10px;
+    text-align: right;
+    @media screen and (max-width: 767px) {
+      text-align: center;
+    }
+  }
+  .pagination {
+    @include border-radius(0);
+    position: relative;
+    padding: 0 40px 0 50px;
+    margin-bottom: 0;
+    display: inline-block;
+    min-height: 60px;
+    text-align: center;
+    .prev-arrow,
+    .next-arrow{
+      @include border-radius(0);
+      position: absolute;
+      top: 12px;
+      display: inline-block;
+      font-size: 0;
+      padding: 0;
+      width: 0; 
+      height: 0;
+      border: 0;
+    }
+    .prev-arrow{
+      left: 14px;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-right: 6px solid #64686E;
+    }
+    .next-arrow{
+      left: 16px;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 6px solid #64686E;
+    }
+    li {
+      margin: 0 6px 10px 0;
+      display: inline-block;
+      vertical-align: top;
+      a,span {
+        @include border-radius(50%);
+        @include transition(0.2s all ease-in-out);
+        position: relative;
+        display: block;
+        margin-left: -1px;
+        line-height: 1.1;
+        font-size: 100%;
+        border: solid 1px #E3E8ED;
+        font-weight: 400;
+        color: #818793;
+        background-color: #ffffff;
+        padding: 10px 5px 5px;
+        width: 36px;
+        height: 36px;
+        &:hover,
+        &:focus {
+          @include transition(0.2s all ease-in-out);
+          color: map-get($global-color, a);
+          border-color: map-get($global-color, active);
+          background-color: map-get($global-color, active);
+        }
+      }
+      &.prev,
+      &.next{
+        position: absolute;
+        top: 0;
+        margin: 0;
+      }
+      &.prev{
+        left: 0;
+      }
+      &.next{
+        right: 0;
+      }
+      &.prev a,
+      &.next a {
+        position: relative;
+        display: block;
+        cursor: pointer;
+      }
+      &.active a {
+        @include box-shadow(0 4px 8px 0 rgba(91, 87, 75, 0.12));
+        color: #ffffff;
+        border-color: map-get($global-color, active);
+        background-color: map-get($global-color, active);
+      }
+      &.prev a:hover .prev-arrow,
+      &.prev a:focus .prev-arrow{
+        background-color: map-get($global-color, active);
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-right: 6px solid #ffffff;
+      }
+      &.next a:hover .next-arrow,
+      &.next a:focus .next-arrow {
+        background-color: map-get($global-color, active);
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-left: 6px solid #ffffff;
+      }
+    }
+  }
+  @media screen and (max-width: 992px) {
+    margin-top: 20px;
+    margin-bottom: 3.5rem;
+  }
+  @media screen and (max-width: 767px) {
+    margin-bottom: 2.5rem;
+  }
+}
+.section-paging-step{
+  @include clearfix();
+  @include border-radius(0 0 2px 2px);
+  padding: 15px 0;
+  font-size: 1.3rem;
+  border: 1px solid #DCE4EE;
+  border-top: 0;
+  .result-paging{
+    text-align: center;
+    .paging-label,
+    .paging-input,
+    .paging-total,
+    .pagination-nav,
+    .page-prev,
+    .page-next{
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .pagination-nav{
+      ul{
+        padding-left: 0;
+      }
+    }
+    .paging-label{
+      padding-right: 10px;
+      p{
+        margin: 0;
+      }
+    }
+    .paging-input{
+      padding-right: 7px;
+      .form-control{
+        @include border-radius(2px);
+        padding: 5px 1px;
+        width: 30px;
+        height: 30px;
+        font-size: 100%;
+        color: map-get($global-color, accent);
+        background: map-get($global-color, a);
+        border-color: #E3E8ED;
+        text-align: center;
+        font-weight: bold;
+        &:focus{
+          border-color: #80bdff;
+        }
+      }
+    }
+    .paging-total{
+      padding-right: 8px;
+      p{
+        margin: 0;
+      }
+    }
+    .page-item{
+      a{
+        @include border-radius(2px);
+        @include transition(0.3s border ease-in-out);
+        position: relative;
+        padding: 8px 3px;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        display: block;
+        font-size: 1.3rem;
+        color: map-get($global-color, b);
+        background: map-get($global-color, a);
+        border: 1px solid #E3E8ED;
+        &:hover,
+        &:focus{
+          @include transition(0.3s border ease-in-out);
+          border-color: map-get($global-color, active);
+          background: map-get($global-color, active);
+          .triangle-prev{
+            @include transition(0.1s border ease-in-out);
+            border-right:6px solid map-get($global-color, a);
+          }
+          .triangle-next{
+            @include transition(0.1s border ease-in-out);
+            border-left: 6px solid map-get($global-color, a);
+          }
+        }
+      }
+    }
+    .page-prev{
+      margin-right: 10px;
+    }
+    .page-next{
+      margin-left: 10px;
+    }
+  }
+  @media screen and (max-width: 390px) {
+    padding: 15px 10px !important;
+  }
+}
+.triangle-prev,
+.triangle-next{
+  @include transition(0.1s border ease-in-out);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: 0;
+  margin-top: -4px;
+}
+.triangle-prev{
+  margin-left: -4px;
+  width: 0; 
+  height: 0; 
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent; 
+  border-right:6px solid #64686E; 
+}
+.triangle-next{
+  margin-left: -3px;
+  width: 0; 
+  height: 0; 
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 6px solid #64686E;
+}

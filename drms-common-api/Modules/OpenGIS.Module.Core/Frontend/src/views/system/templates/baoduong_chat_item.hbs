@@ -1,0 +1,47 @@
+﻿<div class="chat-comment">
+    {{#if user_name}}
+    <div class="chat-item">
+        <div class="chat-media chat-left" style="float: left!important">
+            <div class="chat-name">
+                <p>{{ user_name }}</p>
+            </div>
+            <div class="chat-item-content">
+                {{#if message}}
+                <div class="chat-text">
+                    <p>{{ message }}</p>
+                </div>
+                {{/if}}
+                {{#if full_image_url}}
+                <div class="chat-image">
+                    <img src="{{full_image_url}}" alt="Hình ảnh đính kèm" height="100" width="200">
+                </div>
+                {{/if}}
+                <div class="chat-time">
+                    <p>{{ datetime_create_txt }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <div class="chat-item">
+        <div class="chat-media chat-right" style="float: right!important">
+            {{#if message}}
+            <div class="chat-text chat-right">
+                <p>{{ message }}</p>
+            </div>
+            {{/if}}
+            {{#if full_image_url}}
+            <div class="chat-image chat-right">
+                <img src="{{full_image_url}}" alt="Hình ảnh đính kèm" height="100" width="200">
+            </div>
+            {{/if}}
+            <div class="chat-time chat-right">
+                <p>{{ datetime_create_txt }}</p>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+
+
+</div>
+

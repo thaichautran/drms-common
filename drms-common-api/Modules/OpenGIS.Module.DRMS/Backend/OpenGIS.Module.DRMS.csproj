@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+  <PropertyGroup>
+    <!-- Explicitly generate Assembly Info -->
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+  </PropertyGroup>
+ <ItemGroup>
+    <ProjectReference Include="..\..\OpenGIS.Module.Core\Backend\OpenGIS.Module.Core.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,27 @@
+.dx-field-item-help-text,
+.dx-field-item-label-text,
+.user-label {
+    font-weight: 500;
+}
+
+.user-locked {
+    background-color: rgb(243, 171, 158) !important;
+    color: #0d0c0c;
+
+    .dx-toolbar {
+        background-color: rgb(243, 171, 158) !important;
+    }
+}
+
+.user-unlocked {
+    background-color: rgb(222, 248, 224) !important;
+    color: #0a0909;
+
+    .dx-toolbar {
+        background-color: rgb(222, 248, 224) !important;
+    }
+}
+
+.passwd-element-class {
+    color: #0a0909;
+}

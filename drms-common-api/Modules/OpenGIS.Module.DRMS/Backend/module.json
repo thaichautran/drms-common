@@ -1,0 +1,7 @@
+{
+    "enabled": true,
+    "id": "OpenGIS.Module.DRMS",
+    "isBundledWithHost": true,
+    "name": "DRMS",
+    "version": "1.0.0"
+}

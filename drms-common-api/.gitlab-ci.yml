@@ -1,0 +1,67 @@
+workflow:
+  rules:
+    # - if: $CI_COMMIT_BRANCH == "main" || ($CI_PIPELINE_SOURCE == 'merge_request_event' && ( $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" ))
+    - if: $CI_COMMIT_BRANCH == "drms/common"
+
+default:
+  image: docker:latest
+  services:
+    - docker:latest-dind
+  before_script:
+    - echo "$HARBOR_PASSWORD" | docker login $HARBOR_HOST -u $HARBOR_USERNAME --password-stdin
+
+stages:
+  - build
+  # - test
+  - release
+  - deploy
+
+variables:
+  CONTAINER_TEST_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  CONTAINER_RELEASE_IMAGE: $CI_REGISTRY_IMAGE:latest
+  RELEASE_IMAGE_NAME: $CI_PROJECT_NAME-drms
+  GIT_CLONE_PATH: "$CI_BUILDS_DIR/$CI_PROJECT_NAME/$CI_COMMIT_BRANCH"
+
+build:
+  stage: build
+  script:
+    - docker image build -t $RELEASE_IMAGE_NAME:$CI_COMMIT_SHA . --network=host
+
+# test1:
+#   stage: test
+#   script:
+#     - docker pull $CONTAINER_TEST_IMAGE
+#     - docker run $CONTAINER_TEST_IMAGE /script/to/run/tests
+
+# test2:
+#   stage: test
+#   script:
+#     - docker pull $CONTAINER_TEST_IMAGE
+#     - docker run $CONTAINER_TEST_IMAGE /script/to/run/another/test
+
+release-image:
+  stage: release
+  script:
+    - docker image tag $RELEASE_IMAGE_NAME:$CI_COMMIT_SHA $HARBOR_HOST/$HARBOR_PROJECT/$RELEASE_IMAGE_NAME:$CI_COMMIT_SHA
+    - docker image tag $RELEASE_IMAGE_NAME:$CI_COMMIT_SHA $HARBOR_HOST/$HARBOR_PROJECT/$RELEASE_IMAGE_NAME:latest
+    - docker push $HARBOR_HOST/$HARBOR_PROJECT/$RELEASE_IMAGE_NAME
+  after_script:
+    - docker logout $HARBOR_HOST
+  rules:
+    - if: $CI_COMMIT_BRANCH == "drms/common"
+
+deploy:
+  stage: deploy
+  script:
+    - ssh root@27.71.21.171 -t "cd /store/services/drms && docker compose down && docker compose rm -f && docker compose pull && docker compose up -d"
+  rules:
+    - if: $CI_COMMIT_BRANCH == "drms/common"
+  environment: production
+
+# Build Docker:
+#   script:
+#     - cd $WEBHOST_ROOT
+#     - dotnet publish -c Release -o ./pub-be
+#     - docker compose down
+#     - docker compose build --no-cache
+#     - docker compose up -d --remove-orphans

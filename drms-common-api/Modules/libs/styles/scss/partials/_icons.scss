@@ -1,0 +1,350 @@
+/*************************************
+**************************************
+These are the styles for
+the icons section
+**************************************
+**************************************/
+
+[class^="icons-"],
+[class*=" icons-"] {
+    position: relative;
+    z-index: 10;
+    display: inline-block;
+    *margin-right: 0.3em;
+    vertical-align: middle;
+    background-image: url("../images/front/sprite.png") !important;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+    position: relative;
+    z-index: 10;
+    display: inline-block;
+    *margin-right: 0.3em;
+    vertical-align: middle;
+    color: inherit;
+    font-size: 1.1rem;
+    color: #828A95;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+
+    [class^="icons-"],
+    [class*=" icons-"] {
+        background-image: url("../images/front/sprite@2x.png") !important;
+    }
+}
+
+//icons normal
+//@include sprites($spritesheet-sprites);
+//icons retina
+@include retina-sprites($retina-groups);
+
+.icon-popup {
+    width: 14px;
+    height: 14px;
+    vertical-align: top;
+    background: url(#{$base-url}/icon-close-popup.svg) no-repeat scroll transparent;
+    background-size: 100%;
+    -webkit-background-size: 100%;
+}
+
+.icon-search {
+    width: 14px;
+    height: 14px;
+    vertical-align: top;
+    background: url(#{$base-url}/icon-search.svg) no-repeat scroll transparent;
+}
+
+.icon-hc {
+    width: 22px;
+    height: 24px;
+    vertical-align: top;
+    background: url(#{$base-url}/icon-hc.svg) no-repeat scroll transparent;
+}
+
+a:hover .icon-hc,
+a:focus .icon-hc,
+.active .icon-hc {
+    background: url(#{$base-url}/icon-hc-hvr.svg) no-repeat scroll transparent;
+}
+
+.icon-ldl {
+    width: 24px;
+    height: 24px;
+    vertical-align: top;
+    background: url(#{$base-url}/icon-lbd.svg) no-repeat scroll transparent;
+}
+
+a:hover .icon-ldl,
+a:focus .icon-ldl,
+.active .icon-ldl {
+    background: url(#{$base-url}/icon-lbd-hvr.svg) no-repeat scroll transparent;
+}
+
+.icon-seach-tb {
+    width: 24px;
+    height: 24px;
+    vertical-align: top;
+    background: url(#{$base-url}/icon-timkiem.svg) no-repeat scroll transparent;
+}
+
+a:hover .icon-seach-tb,
+a:focus .icon-seach-tb,
+.active .icon-seach-tb {
+    background: url(#{$base-url}/icon-timkiem-hvr.svg) no-repeat scroll transparent;
+}
+
+.icon-close {
+    width: 16px;
+    height: 16px;
+    vertical-align: top;
+    background: url(#{$base-url}/icon-close.svg) no-repeat scroll transparent;
+}
+
+.icon-folder {
+    width: 20px;
+    height: 14px;
+    vertical-align: top;
+    background: url(#{$base-url}/icon-folder.svg) no-repeat scroll transparent;
+}
+
+.icon-file {
+    width: 12px;
+    height: 16px;
+    vertical-align: top;
+    background: url(#{$base-url}/icon-file.svg) no-repeat scroll transparent;
+}
+
+.icon-logout {
+    width: 24px;
+    height: 24px;
+    vertical-align: top;
+    background: url(#{$base-url}/icon-logout.svg) no-repeat scroll transparent;
+}
+
+a:hover .icon-logout,
+a:focus .icon-logout {
+    background: url(#{$base-url}/icon-logout-hvr.svg) no-repeat scroll transparent;
+}
+
+/*.icon-location {
+    width: 15px;
+    height: 18px;
+    vertical-align: top;
+    background: url(#{$base-url}/icon-location.svg) no-repeat scroll transparent;
+}*/
+
+.icon-setting {
+    width: 17px;
+    height: 18px;
+    vertical-align: top;
+    background: url(#{$base-url}/icon-setting.svg) no-repeat scroll transparent;
+}
+
+.icon-info {
+    width: 18px;
+    height: 18px;
+    vertical-align: top;
+    background: url(#{$base-url}/icon-info.svg) no-repeat scroll transparent;
+}
+
+.icon-problem {
+    width: 24px;
+    height: 24px;
+    vertical-align: top;
+    background: url(#{$base-url}/icon-problem.svg) no-repeat scroll transparent;
+    background-size: cover;
+}
+
+a:hover .icon-problem,
+a:focus .icon-problem,
+.active .icon-problem {
+    background: url(#{$base-url}/icon-problem-hvr.svg) no-repeat scroll transparent;
+    background-size: cover;
+}
+
+.icon-addnew {
+    width: 18px;
+    height: 18px;
+    vertical-align: top;
+    background: url(#{$base-url}/icon-addnew.svg) no-repeat scroll transparent;
+}
+
+.icon-edit {
+    width: 16px;
+    height: 16px;
+    vertical-align: top;
+    /*background: url(#{$base-url}/icon-edit.svg) no-repeat scroll transparent;*/
+}
+
+.icon-delete {
+    width: 15px;
+    height: 16px;
+    vertical-align: top;
+    background: url(#{$base-url}/icon-remove.svg) no-repeat scroll transparent;
+}
+
+.icon-lookup {
+    width: 18px;
+    height: 18px;
+    vertical-align: top;
+    background: url(#{$base-url}/icon-lookup.png) no-repeat scroll transparent;
+}
+
+.icon-export-report {
+    width: 18px;
+    height: 18px;
+    vertical-align: top;
+    background: url(#{$base-url}/icon-export-report.png) no-repeat scroll transparent;
+}
+
+.icon-list {
+    width: 18px;
+    height: 18px;
+    vertical-align: top;
+    background: url(#{$base-url}/icon-addnew-wh.svg) no-repeat scroll transparent;
+}
+
+.icon-chat {
+    width: 17px;
+    height: 16px;
+    vertical-align: top;
+    background: url(#{$base-url}/icon-chat.svg) no-repeat scroll transparent;
+}
+
+/*.icon-handle-administrative {
+    width: 36px;
+    height: 36px;
+    background: url(#{$base-url}/icon-handle-administrative.svg) no-repeat scroll transparent center;
+}
+
+.icon-handle-layer {
+    width: 36px;
+    height: 36px;
+    background: url(#{$base-url}/icon-handle-layer.svg) no-repeat scroll transparent center;
+}
+
+.icon-handle-search {
+    width: 36px;
+    height: 36px;
+    background: url(#{$base-url}/icon-handle-search.svg) no-repeat scroll transparent center;
+}
+
+.icon-handle-legend {
+    width: 36px;
+    height: 36px;
+    background: url(#{$base-url}/icon-handle-legend.svg) no-repeat scroll transparent center;
+}
+
+.icon-handle-report {
+    width: 36px;
+    height: 36px;
+    background: url(#{$base-url}/icon-handle-report.svg) no-repeat scroll transparent center;
+}*/
+
+.icon-action-more {
+    width: 16px;
+    height: 16px;
+    background: url(#{$base-url}/icon-action-more.svg) no-repeat scroll transparent center;
+}
+
+/*.icon-switch-module {
+    width: 36px;
+    height: 36px;
+    background: url(#{$base-url}/icon-action-more.svg) no-repeat scroll transparent center;
+}
+
+.icon-switch-module {
+    width: 36px;
+    height: 36px;
+    background: url(#{$base-url}/icon-switch-module.svg) no-repeat scroll transparent center;
+}
+
+.icon-home {
+    width: 36px;
+    height: 36px;
+    background: url(#{$base-url}/icon-home.svg) no-repeat scroll transparent center;
+}*/
+
+/*.icon-user {
+    width: 36px;
+    height: 36px;
+    background: url(#{$base-url}/icon-user_2.svg) no-repeat scroll transparent center;
+}*/
+
+/*.icon-up-arrow {
+    width: 10px;
+    height: 10px;
+    background: url(#{$base-url}/icon-up-arrow.svg) no-repeat scroll transparent center;
+}*/
+
+.icon-export-excel {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    background: url(#{$base-url}/icon-export-excel.svg) no-repeat scroll transparent center;
+}
+
+.icon-export-gdb {
+    width: 16px;
+    height: 16px;
+    background: url(#{$base-url}/icon-export-gdb.svg) no-repeat scroll transparent center;
+}
+
+.icon-export-shp {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    background: url(#{$base-url}/icon-export-shp.svg) no-repeat scroll transparent center;
+}
+
+.icon-export-map-info {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    background: url(#{$base-url}/icon-export-map-info.svg) no-repeat scroll transparent center;
+}
+
+.icon-import-excel {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    background: url(#{$base-url}/icon-import-excel.svg) no-repeat scroll transparent center;
+}
+
+.icon-import-gdb {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    background: url(#{$base-url}/icon-import-gdb.svg) no-repeat scroll transparent center;
+}
+
+.icon-import-shp {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    background: url(#{$base-url}/icon-import-shp.svg) no-repeat scroll transparent center;
+}
+
+.icon-geojson {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    background: url(#{$base-url}/icon-geojson.svg) no-repeat scroll transparent center;
+}
+
+.icon-schema {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    background: url(#{$base-url}/icon-schema.svg) no-repeat scroll transparent center;
+}
+
+.icon-add-layer {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    background: url(#{$base-url}/icon-add-layer.svg) no-repeat scroll transparent center;
+}

@@ -1,0 +1,27 @@
+.dx-multiview {
+    >.dx-multiview-wrapper {
+        border-width: 0;
+    }
+}
+
+.dx-button-has-text .dx-button-content {
+    font-size: 14px;
+}
+
+.dx-item-content.dx-toolbar-item-content {
+    font-size: 16px;
+}
+
+.dx-field-item-label-text {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+dx-texteditor-input,
+.dx-placeholder {
+    font-size: 14px;
+}
+
+.dx-item-content.dx-list-item-content {
+    font-size: 14px;
+}

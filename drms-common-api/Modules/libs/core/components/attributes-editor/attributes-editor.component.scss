@@ -1,0 +1,128 @@
+#masterViewInfoFormContainer {
+    // height: calc(70vh-300px) !important;
+
+    .dx-form-group-caption {
+        font-size: 20px;
+        font-weight: 400;
+    }
+
+    .dx-texteditor-container {
+        font-size: 14px;
+        font-size: 14px
+    }
+
+    .dx-textbox,
+    .dx-texteditor {
+    }
+
+    .dx-item.dx-box-item {
+        padding-top: 5px;
+        height: 100% !important;
+        display: block !important;
+    }
+
+    dx-item-content.dx-box-item-content {
+        height: 100% !important;
+    }
+
+    .attribute-form-item {
+        height: 100% !important;
+    }
+
+    .dx-form-group-with-caption>.dx-form-group-content {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+}
+
+#masterViewInfoPopupContainer {
+    .dx-tabs {
+        border: 0 !important;
+    }
+
+    .dx-multiview-wrapper {
+        border: 0 !important;
+    }
+
+    .dx-tabpanel-container {
+        >.dx-multiview-wrapper {
+            padding: 0px !important;
+        }
+    }
+
+    .dx-tab-selected:after {
+        border-left: 1px solid #ddd !important;
+        border-right: 1px solid #ddd !important;
+        border-top: none !important;
+    }
+
+    .dx-tabpanel.dx-state-focused .dx-tab:not(.dx-tab-selected):before {
+        border-bottom: 1px solid #ddd !important;
+    }
+
+    .dx-tabpanel-tabs {
+        height: 37px !important;
+    }
+}
+
+.attributeButtonGroup {
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+#btnClosePopupAttribute {
+    color: #ffff;
+}
+
+#btnSaveFeature {
+    color: #ffff;
+}
+
+/*#popupImageContainer .dx-toolbar-before {
+    width: 100%;
+}*/
+
+
+.attachment-list {
+    .dx-item.dx-list-item {
+        border: none;
+    }
+    .dx-list-item-content {
+        padding: 5px;
+    }
+
+    .file-preview {
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1);
+        padding: 5px 8px;
+        margin-bottom: 4px;
+    }
+
+    .file-preview-actions {
+        display: inline-block;
+
+        .dx-fileuploader-cancel-button {
+            border: none;
+        }
+    }
+
+    .file-preview-info {
+        display: inline-block;
+        margin-left: 10px;
+        width: 400px;
+        text-wrap: wrap;
+
+        .file-preview-name {
+            font-weight: 600;
+        }
+
+        .file-preview-size {
+            font-size: 10px;
+            margin-left: 5px;
+        }
+    }
+
+    .file-preview-image {
+        display: block;
+        margin-left: 45px;
+    }   
+}

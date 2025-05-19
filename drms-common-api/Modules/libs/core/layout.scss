@@ -1,0 +1,323 @@
+﻿body {
+    font-size: 13px;
+
+    [class^="dx-"] {
+        font-size: 13px;
+    }
+
+    .title span {
+        font-size: 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 250px;
+        display: block;
+    }
+
+    .dx-button-content img.dx-icon {
+        height: 36px !important;
+        width: auto !important;
+        border-radius: 50%;
+        background-color: #ffffff;
+        margin-left: -5px !important;
+        padding: 5px !important;
+    }
+
+    .popup-switch-module .dx-popup-title {
+        background-color: #253E90;
+        color: #ffffff;
+    }
+
+    .popup-switch-module .dx-icon.dx-icon-close {
+        color: #ffffff;
+    }
+
+    .identify-content {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+    }
+
+    .dropdown-menu-account {
+        left: -30px;
+    }
+
+    .header-front #nav-control-sp {
+        padding-top: 2px !important;
+    }
+
+    // .dx-button[aria-label="Hủy"] {
+    //     background-color: #d9534f;
+    //     color: #fff
+    // }
+    // .dx-button[aria-label="Lưu"] {
+    //     background-color: #337ab7;
+    //     color: #fff
+    // }
+
+    .header-front .logo>h1 {
+        min-width: 500px !important
+    }
+
+    .esri-ui-top-right .esri-component,
+    .esri-ui-top-left .esri-component {
+        margin-bottom: 0 !important;
+    }
+
+    .calcite-theme-light {
+        --calcite-code-family: "Consolas", "Andale Mono", "Lucida Console", "Monaco", monospace;
+        --calcite-sans-family: 'Reddit Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI Variable', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        --calcite-font-size--3: 0.625rem;
+        --calcite-font-size--2: 0.75rem;
+        --calcite-font-size--1: 1.4rem;
+        --calcite-font-size-0: 1rem;
+        --calcite-font-size-1: 1.125rem;
+        --calcite-font-size-2: 1.25rem;
+        --calcite-font-size-3: 1.625rem;
+        --calcite-font-size-4: 2rem;
+        --calcite-font-size-5: 2.5rem;
+        --calcite-font-size-6: 3rem;
+        --calcite-font-size-7: 3.5rem;
+        --calcite-font-size-8: 4rem;
+    }
+
+    .mdi {
+        font-size: 15px;
+    }
+
+    .datepicker-days table thead tr,
+    .datepicker-days table tbody tr,
+    .datepicker-days table tfoot tr {
+        font-family: 'Reddit Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI Variable', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 13px;
+    }
+
+    .filter-search {
+        padding: 15px 9px 1px 9px !important;
+    }
+
+    .search-navigation .nav-tabs li a {
+        font-size: 13px !important;
+    }
+
+    .search-by-keyword .form-control {
+        font-size: 13px !important;
+        font-weight: 500 !important;
+    }
+
+    .top-heading-wrap {
+        color: #253e90 !important;
+        font-weight: bold;
+        top: 88px;
+        left: 75px;
+        font-size: var(--font-size-sm);
+    }
+
+    .top-heading {
+        height: 56px;
+        padding: 18px 40px 18px 15px;
+    }
+
+    .map-top {
+        position: relative;
+        top: 0;
+    }
+
+    .map-navigations {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+
+        i[class^="icon-"],
+        i[class*=" icon-"] {
+            font-size: 20px;
+            filter: grayscale(100%);
+        }
+
+        i[class^="icon-"]:hover,
+        i[class*=" icon-"]:hover {
+            cursor: pointer;
+        }
+    }
+
+    #tabs-map,
+    #tabs-sidebar,
+    #tabs-navigate {
+        margin-top: 18px;
+        border-bottom: none;
+
+        li {
+            height: 36px;
+            width: 36px;
+            margin-left: 12px;
+            margin-bottom: 12px
+        }
+
+        li.active,
+        li:hover,
+        li:has(a.active) {
+            border-radius: 36px;
+            background-color: #253e90;
+        }
+
+        li.active>a::before {
+            display: none;
+        }
+
+        li>a {
+            height: 36px;
+            width: 36px;
+            display: block;
+
+            i {
+                margin: 8px;
+                font-size: 20px;
+                height: 20px;
+            }
+
+            i:before {
+                position: absolute;
+            }
+        }
+
+        li:hover a,
+        li a:hover,
+        li.active a,
+        li a.active {
+            filter: brightness(0) invert(1);
+        }
+    }
+
+    #tabs-navigate {
+        position: absolute;
+        bottom: 0;
+    }
+
+    .user-account .dropdown-menu-account {
+        left: 30px !important;
+        top: 10px !important;
+        width: 180px !important;
+    }
+
+    .nav-tabs .dropdown-menu-account {
+        left: 160px !important;
+        top: -70px !important;
+        width: 180px !important;
+    }
+
+    .dropdown-menu-account {
+        margin: 0px !important;
+        padding: 0px !important;
+        transform: translate3d(-100px, 20px, 0) !important;
+
+        li {
+            width: 100% !important;
+            margin-left: 0px !important;
+            margin-bottom: 0px !important;
+
+            a {
+                width: 100% !important;
+                filter: grayscale(0) !important;
+                color: #000000 !important;
+                margin: 0px !important;
+                padding: 5px !important;
+                font-size: 13px !important;
+
+                i {
+                    margin: 0 5px 0px 0 !important;
+                }
+
+                i:before {
+                    position: relative !important;
+                }
+            }
+
+            a:hover {
+                width: 100% !important;
+                filter: grayscale(0) !important;
+                color: #000000 !important;
+            }
+        }
+
+        li:hover {
+            margin-left: 0px !important;
+            border-radius: unset !important;
+            background-color: #f1f6f7 !important;
+
+            a {
+                width: 100% !important;
+                filter: grayscale(0) !important;
+                color: #000000 !important;
+            }
+        }
+    }
+
+    .user-account .dropdown-menu:after,
+    .user-account .dropdown-menu:before {
+        left: 90%;
+    }
+
+    .problem-row .problem-col .label-unit {
+        margin-bottom: 0.3rem;
+        font-size: 13px;
+    }
+
+    .problem-row .problem-col .form-control {
+        font-size: 13px;
+    }
+
+    .map-tools-container {
+        max-height: 300px;
+        background-color: #fff;
+    }
+}
+
+.header-main-inner {
+    //background-color: white !important;
+    background-color: #F5F7F5 !important;
+}
+
+.menu-item {
+    font-weight: 500;
+
+    a {
+        color: #2c2c2c !important;
+    }
+
+    a:hover,
+    a:focus {
+        color: white !important;
+        background-color: #067148 !important;
+    }
+}
+
+.menu-item.active {
+    a {
+        color: white !important;
+        background-color: #067148 !important;
+    }
+}
+
+.table>tbody>tr>td {
+    font-size: 13px !important;
+}
+
+.sidebar-tooltip-content {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.btn-undo-home {
+    border-radius: 6px;
+    color: #ffffff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    font-weight: 600;
+    font-size: 13px;
+
+    &:hover {
+        color: rgb(255, 255, 255);
+        background-color: darken(#dc3545, 10%);
+        border-color: darken(#dc3545, 20%);
+    }
+}

@@ -1,0 +1,273 @@
+@{
+    Layout = null;
+}
+@using System.Data;
+@using System.Linq;
+@using Dapper;
+@using System.Globalization;
+@using OpenGIS.Module.Core.ViewModels;
+@using VietGIS.Infrastructure.Enums
+@model OpenGIS.Module.Core.ViewModels.RecordsTableViewModel;
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel='stylesheet' media='screen,print'>
+    <style>
+        html,
+        body {
+            font-family: "Reddit Sans", "Helvetica Neue", "Segoe UI", "helvetica", "verdana", "sans-serif";
+        }
+
+        table {
+            margin: 0 !important;
+            position: relative;
+            border-collapse: separate;
+            border: 1px solid #000;
+        }
+
+        table tr td {
+            font-size: 11px;
+        }
+
+        table tr th {
+            font-size: 11px;
+        }
+
+        table:not(.table-min-none) tr td:not(.stt),
+        table:not(.table-min-none) tr th:not(.stt) {
+            min-width: 150px;
+        }
+
+        table thead {
+            background: white;
+            position: sticky;
+            top: 0;
+            border: 1px solid #000 !important;
+            z-index: 100;
+        }
+
+        table thead th {
+            border: 1px solid #000 !important;
+            vertical-align: middle !important;
+            text-align: center;
+            font-weight: bolder;
+        }
+
+        table tr td.stt,
+        table tr th.stt {
+            width: 50px;
+            white-space: nowrap;
+            text-align: center;
+            width: 50px;
+            min-width: 50px;
+            max-width: 50px;
+            left: 0px;
+            position: -webkit-sticky;
+            position: sticky;
+            border: 1px solid #000 !important;
+            background-color:white;
+            z-index: 99;
+        }
+
+        table ul {
+            padding-left: 10px;
+        }
+
+        .table-bordered {
+            border: 1px solid #000;
+        }
+
+        .table-bordered>tbody>tr>td,
+        .table-bordered>tbody>tr>th,
+        .table-bordered>tfoot>tr>td,
+        .table-bordered>tfoot>tr>th,
+        .table-bordered>thead>tr>td,
+        .table-bordered>thead>tr>th {
+            border: 1px solid #000 !important;
+        }
+
+        tr td[rowspan] {
+            vertical-align: middle !important;
+            text-align: center !important;
+        }
+
+        .report-header {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .second-col {
+            width: 150px;
+            min-width: 150px;
+            max-width: 150px;
+            left: 50px;
+            position: -webkit-sticky;
+            position: sticky;
+            background-color:white;
+            border: 1px solid #000 !important;
+            z-index: 99;
+        }
+
+        .report-content table tr td,
+        .report-content table tr th {
+            font-size: 11px;
+        }
+
+        .report-content table tr th:first-child {
+            width: 50px;
+        }
+
+        .container-table {
+            width: 100%;
+            /*height: 89%;
+            overflow: auto;*/
+        }
+
+        p {
+            margin: unset;
+            text-align: right !important;
+        }
+
+        p.sum {
+            font-weight: bold;
+        }
+
+        p.sum-child {
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .font-weight-bolder {
+            font-weight: bolder;
+        }
+
+        .group-td {
+            @* background-color: #05478d; *@
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="text-center">
+        <h3 style="text-transform: uppercase;">
+            <b> BÁO CÁO TỔNG HỢP CƠ SỞ DỮ LIỆU @Model.table?.name_vn?.ToUpper()</b>
+            <br>
+            <b> THÀNH PHỐ HÀ NỘI</b>
+        </h3>
+        <span style="font-style: italic;"> Ngày @DateTime.Now.ToString("dd/MM/yyyy")</span>
+        <br>
+        <span style="font-style: italic;"> Tổng: @Model.total?.ToString("#,###.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</span>
+    </div>
+    <div class="container-table" style="margin-top: 10px;">
+        <table class="table table-bordered" border="1">
+            <thead>
+                <tr>
+                    <th class="stt">STT</th>
+                    @{
+                        foreach (var item in Model?.columns)
+                        {
+                            <th>@item.name_vn</th>
+                        }
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var index = @Model.index;
+
+                    foreach (var data in Model?.records)
+                    {
+                        <tr>
+                            <td class="text-center stt">@(++index)</td>
+                            @foreach (var item in Model?.columns)
+                            {
+                                @if (data.ContainsKey(item.column_name) && data[item.column_name] != null)
+                                {
+                                    var value = data.FirstOrDefault(s => s.Key == item.column_name);
+                                    @switch (true)
+                                    {
+                                        case true when value.Value == null:
+                                            <td class="text-center">-</td>
+                                            break;
+                                        case true when item.lookup_table_id > 0:
+                                            @if (@Model?.domains?.ContainsKey(item.column_name) == true)
+                                            {
+                                                <td class="text-left">
+                                                    @{
+                                                        var domain = Model.domains.FirstOrDefault(s => s.Key == item.column_name).Value.Where(x => x.id != null);
+                                                        var domainValue = domain?.FirstOrDefault(x => x.id.Equals(value.Value.ToString()));
+                                                    }
+                                                    @(domainValue?.mo_ta ?? "-")
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td class="text-center">-</td>
+                                            }
+                                            break;
+                                        case true when item.column_name.Equals("province_code"):
+                                            <td class="text-left">@Model?.provinces?.FirstOrDefault(x => x.area_id == value.Value?.ToString())?.name_vn</td>
+                                            break;
+                                        case true when item.column_name.Equals("district_code"):
+                                            <td class="text-left">@Model?.districts?.FirstOrDefault(x => x.area_id == value.Value?.ToString())?.name_vn</td>
+                                            break;
+                                        case true when item.column_name.Equals("commune_code"):
+                                            <td class="text-left">@Model?.communes?.FirstOrDefault(x => x.area_id == value.Value?.ToString())?.name_vn</td>
+                                            break;
+                                        case true when item.data_type.Equals(EnumPgDataType.Boolean):
+                                            <td class="text-center">@(Convert.ToBoolean(value.ToString()) == true ? "Có" : "Không")</td>
+                                            break;
+                                        case true when item.data_type.Equals(EnumPgDataType.SmallInt):
+                                        case true when item.data_type.Equals(EnumPgDataType.Integer):
+                                            @if (int.TryParse(value.Value.ToString(), out int intValue))
+                                            {
+                                                <td class="text-right">@intValue.ToString("#,###.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                <td class="text-center">-</td>
+                                            }
+                                            break;
+                                        case true when item.data_type.Equals(EnumPgDataType.Double):
+                                            @if (double.TryParse(value.Value.ToString(), out double doubleValue))
+                                            {
+                                                <td class="text-right">@doubleValue.ToString("#,###.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                <td class="text-center">-</td>
+                                            }
+                                            break;
+                                        case true when item.data_type.Equals(EnumPgDataType.Date):
+                                        case true when item.data_type.Equals(EnumPgDataType.Time):
+                                        case true when item.data_type.Equals(EnumPgDataType.DateTime):
+                                        case true when item.data_type.Equals(EnumPgDataType.DateTimeTZ):
+                                            <td class="text-center">@Convert.ToDateTime(value.Value).ToString("dd/MM/yyyy")</td>
+                                            break;
+                                        default:
+                                            <td class="text-center">@value.Value</td>
+                                            break;
+                                    }
+                                }
+                                else
+                                {
+                                    <td class="text-center">-</td>
+                                }
+
+                            }
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+
+
+</html>

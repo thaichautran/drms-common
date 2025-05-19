@@ -1,0 +1,67 @@
+@section Headers { @(await Html.PartialAsync("_Headers")) }
+<div class="wrap-main-map">
+    <div class="main-inner-map">
+        <div class="wrap-col-lft">
+            <div class="col-lft-navi">
+                <div class="map-front-top">
+                    <div class="map-top">
+                        <!--<nav class="map-navigation">-->
+                        <nav class="map-navigations">
+                            <ul class="nav nav-tabs" id="tabs-sidebar" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a href="#tab-display-config" class="active show" data-toggle="tab" data-bs-target="#tab-content" role="tab" title="Cấu hình giao diện">
+                                        <i class="icon icon-designtools"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a href="#backup-history" class="" data-toggle="tab" data-bs-target="#backup-history" role="tab" title="Lịch sử sao lưu hệ thống">
+                                        <i class="icon icon-copy-success"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-tabs nav-tabs-bottom" id="tabs-navigate">
+                                @(await Html.PartialAsync("_UserNav"))
+                                <li>
+                                    <a href="/system" title="Quay lại">
+                                        <i class="icon icon-undo"></i>
+                                    </a>
+                                </li>
+                                <!--<li>
+                                    <a href="javascript:;" title="Chuyển nhanh module" class="switch-module-action switch-module">
+                                        <i class="icon icon-command"></i>
+                                    </a>
+                                </li-->
+                                <li>
+                                    <a href="/" title="Trang chủ">
+                                        <i class="icon icon-home-2"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <!--end map-front-top-->
+            </div>
+        </div>
+        <div class="wrap-col-main">
+            <div class="col-main-map">
+                <div class="col-main-map-inner">
+                    <div class="col-lft-navi-inner">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="tab-display-config" role="tabpanel">
+                                <div class="tab-item-container" id="display-config"></div>
+                            </div>
+                            <div class="tab-pane fade" id="backup-history" role="tabpanel">
+                                <div class="tab-item-container" id="backup-history-container"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end wrap-col-main-->
+            </div>
+            <!--end main-inner-map-->
+        </div>
+    </div>
+</div>
+@section styles { <%= htmlWebpackPlugin.tags.headTags %> }
+    @section scripts {<%= htmlWebpackPlugin.tags.bodyTags %>}

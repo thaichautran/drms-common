@@ -1,0 +1,27 @@
+.dx-item:has(.group-search-common) {
+     flex-grow: 0 !important;
+}
+
+.dx-box-item-content {
+     font-size: 13px !important;
+     font-weight: 600;
+}
+
+.dx-button-text {
+     font-size: 13px !important;
+}
+
+.dx-list-select-all-checkbox {
+     display: inline-flex;
+}
+
+.search-box-wrapper {
+     display: flex;
+     flex-direction: column;
+     height: 100%;
+     padding: 0px;
+
+     .dx-tabpanel .dx-multiview-wrapper {
+          border: 0px !important;
+     }
+}

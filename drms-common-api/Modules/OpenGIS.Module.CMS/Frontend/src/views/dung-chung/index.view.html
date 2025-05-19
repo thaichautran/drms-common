@@ -1,0 +1,55 @@
+<header id="header">
+    <div class="container">
+        <div class="header-front">
+            <div class="logo">
+                <img src="@VietGIS.Infrastructure.GlobalConfiguration.ApplicationLogo" alt="" class="header-logo" />
+                <div class="header-title">
+                    <h6>@VietGIS.Infrastructure.GlobalConfiguration.ApplicationName</h6>
+                    <h6>@VietGIS.Infrastructure.GlobalConfiguration.ApplicationDescription</h6>
+                </div>
+            </div>
+        </div>
+        <div class="group-account">
+            <div class="user-account">
+                <div class="dropdown">
+                    <button id="acount" type="button" class="btn dropdown-toggle btn-acount" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="acount-username icon icon-user"></i>Xin chào, @User.Identity.Name
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-account" aria-labelledby="acount" x-placement="bottom-start" style="position: absolute; transform: translate3d(-46px, 20px, 0px); top: 0px; left: 0px; will-change: transform;">
+                        <li>
+                            <a href="javascript:void(0);" class="change-info-action">
+                                <i class="icon icon-user" style="font-size: 16px"></i>
+                                Thông tin cá nhân
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="change-password-action">
+                                <i class="icon icon-user-edit" style="font-size: 16px"></i>
+                                Thay đổi mật khẩu
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/account/logout">
+                                <i class="icon icon-logout-1" style="font-size: 16px"></i>
+                                Đăng Xuất
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--end user-account-->
+        </div>
+    </div>
+</header>
+<div class="management-cate d-flex flex-column justify-content-center define-top w-100 h-100">
+    <div class="container">
+        <ul class="management-list"></ul>
+        <div class="row" style="margin:auto; padding-bottom: 10px;justify-content:center;">
+            <a href="/" class="btn-undo-home btn btn-light " title="Quay lại trang chủ">
+                Màn hình chính
+            </a>
+        </div>
+    </div>
+</div>
+@section styles { <%= htmlWebpackPlugin.tags.headTags %> }
+    @section scripts {<%= htmlWebpackPlugin.tags.bodyTags %>}

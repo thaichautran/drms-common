@@ -1,0 +1,150 @@
+@section Headers {
+@(await Html.PartialAsync("_Headers"))
+}
+<div class="main-inner-map">
+    <div class="wrap-col-lft">
+        <div class="col-lft-navi">
+            <div class="map-front-top">
+                <div class="map-top">
+                    <!--<nav class="map-navigation">-->
+                    <nav class="map-navigations">
+                        <ul class="nav nav-tabs" id="tabs-sidebar" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a href="#ketnoi-chiase-dulieu-content" class="active" data-toggle="tab" data-bs-target="#ketnoi-chiase-dulieu-content" role="tab" title="Kết nối và chia sẻ dữ liệu qua trục liên thông">
+                                    <i class="icon icon-link-square"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#tichhop-gis-tab" data-toggle="tab" data-bs-target="#tichhop-gis-tab" role="tab" title="Tích hợp dữ liệu GIS vào hệ thống ">
+                                    <i class="icon icon-layer"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#map-tab" data-toggle="tab" data-bs-target="#map-tab" role="tab" title="Workspace cho dữ liệu tích hợp">
+                                    <i class="icon icon-map-1"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#dulieu-hethong-tab" data-toggle="tab" data-bs-target="#dulieu-hethong-tab" role="tab" title="Quản trị dữ liệu hệ thống">
+                                    <i class="icon icon-document-copy"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#quantri-log-tab" data-toggle="tab" data-bs-target="#quantri-log-tab" role="tab" title="Quản trị log">
+                                    <i class="icon icon-firstline"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#dangky-dulieu-tab" data-toggle="tab" data-bs-target="#dulieu-hethong-tab" role="tab" title="Đăng ký cấp dữ liệu">
+                                    <i class="icon icon-card-edit"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#phanphoi-dulieu-tab" data-toggle="tab" data-bs-target="#phanphoi-hethong-tab" role="tab" title="Phân phối dữ liệu">
+                                    <i class="icon icon-recovery-convert"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#tracuu-dulieu-tab" data-toggle="tab" data-bs-target="#tracuu-hethong-tab" role="tab" title="Tra cứu dữ liệu">
+                                    <i class="icon icon-receipt-search"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#thoigian-tichhop-dulieu-tab" data-toggle="tab" data-bs-target="#thoigian-tichhop-hethong-tab" role="tab" title="Thiết lập thời gian tích hợp">
+                                    <i class="icon icon-timer-start"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#kichhoat-module-tab" data-toggle="tab" data-bs-target="#kichhoat-module-tab" role="tab" title="Kích hoạt module tích hợp">
+                                    <i class="icon icon-clipboard-tick"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#chia-se-api-tab" data-toggle="tab" data-bs-target="#chia-se-api-tab" role="tab" title="Kích hoạt và khoá API chia sẻ dữ liệu">
+                                    <i class="icon icon-hierarchy-3"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#thietlap-baocao-tab" data-toggle="tab" data-bs-target="#thietlap-baocao-tab" role="tab" title="Thiết lập thông tin kỳ báo cáo">
+                                    <i class="icon icon-setting-2"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#thietlap-nguon-solieu-tab" data-toggle="tab" data-bs-target="#thietlap-nguon-solieu-tab" role="tab" title="Thiết lập thông tin nguồn số liệu báo cáo">
+                                    <i class="icon icon-task-square"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-tabs nav-tabs-bottom" id="tabs-navigate">
+                            @(await Html.PartialAsync("_UserNav"))
+                            <li>
+                                <a href="/dung-chung" title="Quay lại">
+                                    <i class="icon icon-undo"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/" title="Trang chủ">
+                                    <i class="icon icon-home-2"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!--end map-front-top-->
+        </div>
+    </div>
+    <div class="wrap-col-main">
+        <div class="col-main-map">
+            <div class="col-main-map-inner">
+                <div class="col-lft-navi-inner">
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="ketnoi-chiase-dulieu-content" role="tabpanel">
+                            <div class="tab-item-container" id="ketnoi-chiase-dulieu-container"></div>
+                        </div>
+                        <div class="tab-pane fade" id="tichhop-gis-tab" role="tabpanel">
+                            <div class="tab-item-container" id="tichhop-gis-container"></div>
+                        </div>
+                        <div class="tab-pane fade" id="map-tab" role="tabpanel">
+                            <div class="tab-item-container" id="map-container"></div>
+                        </div>
+                        <div class="tab-pane fade" id="dulieu-hethong-tab" role="tabpanel">
+                            <div class="tab-item-container" id="dulieu-hethong-container"></div>
+                        </div>
+                        <div class="tab-pane fade" id="quantri-log-tab" role="tabpanel">
+                            <div class="tab-item-container" id="quantri-log-container"></div>
+                        </div>
+                        <div class="tab-pane fade" id="dangky-dulieu-tab" role="tabpanel">
+                            <div class="tab-item-container" id="dangky-dulieu-container"></div>
+                        </div>
+                        <div class="tab-pane fade" id="phanphoi-dulieu-tab" role="tabpanel">
+                            <div class="tab-item-container" id="phanphoi-dulieu-container"></div>
+                        </div>
+                        <div class="tab-pane fade" id="tracuu-dulieu-tab" role="tabpanel">
+                            <div class="tab-item-container" id="tracuu-dulieu-container"></div>
+                        </div>
+                        <div class="tab-pane fade" id="thoigian-tichhop-dulieu-tab" role="tabpanel">
+                            <div class="tab-item-container" id="thoigian-tichhop-dulieu-container"></div>
+                        </div>
+                        <div class="tab-pane fade" id="kichhoat-module-tab" role="tabpanel">
+                            <div class="tab-item-container" id="kichhoat-module-container"></div>
+                        </div>
+                        <div class="tab-pane fade" id="chia-se-api-tab" role="tabpanel">
+                            <div class="tab-item-container" id="chia-se-api-container"></div>
+                        </div>
+                        <div class="tab-pane fade" id="thietlap-baocao-tab" role="tabpanel">
+                            <div class="tab-item-container" id="thietlap-baocao-container"></div>
+                        </div>
+                        <div class="tab-pane fade" id="thietlap-nguon-solieu-tab" role="tabpanel">
+                            <div class="tab-item-container" id="thietlap-nguon-solieu-container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end wrap-col-main-->
+        </div>
+        <!--end main-inner-map-->
+    </div>
+</div>
+@section styles { <%= htmlWebpackPlugin.tags.headTags %> }
+    @section scripts {<%= htmlWebpackPlugin.tags.bodyTags %>}

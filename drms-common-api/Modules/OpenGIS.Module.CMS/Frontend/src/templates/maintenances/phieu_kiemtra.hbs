@@ -1,0 +1,172 @@
+<html>
+
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel='stylesheet'
+          media='screen,print'>
+    <style>
+        html,
+        body {
+            font-family: Verdana, Calibri, Tahoma, Arial, 'Times New Roman';
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        table {
+            margin: 0 !important;
+            border-collapse: collapse;
+        }
+
+            table tr td {
+                font-size: 11px;
+                height: 30px;
+                padding-left: 5px;
+            }
+
+            table tr th {
+                font-size: 12px;
+                height: 30px;
+            }
+
+            table:not(.table-min-none) tr td:not(.stt),
+            table:not(.table-min-none) tr th:not(.stt) {
+                min-width: 120px;
+            }
+
+            table tr th {
+                vertical-align: middle !important;
+                text-align: center;
+            }
+
+                table tr td.stt,
+                table tr th.stt {
+                    width: 50px;
+                    white-space: nowrap;
+                    text-align: center;
+                }
+
+            table ul {
+                padding-left: 10px;
+            }
+
+        .table-bordered {
+            border: 1px solid #000;
+        }
+            
+            .table-bordered > tbody > tr > td,
+            .table-bordered > tbody > tr > th,
+            .table-bordered > tfoot > tr > td,
+            .table-bordered > tfoot > tr > th,
+            .table-bordered > thead > tr > td,
+            .table-bordered > thead > tr > th {
+                border: 1px solid #000;
+            }
+
+        tr td[rowspan] {
+            vertical-align: middle !important;
+            text-align: center !important;
+        }
+
+        .report-header {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .report-content table tr td,
+        .report-content table tr th {
+            font-size: 12px;
+        }
+
+            .report-content table tr th:first-child {
+                width: 50px;
+            }
+
+        .container-table {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .label-form {
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .label-form span{
+            font-weight: 500!important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-table">
+        <div class="text-center" style="height:80px; text-align: center">
+            <h3 style="text-transform: uppercase;">
+                <b>PHIẾU KIỂM TRA</b>
+                <p style="font-size: 12px">{{wdesc}}</p>
+                <p style="font-size: 10px; text-transform: none">Trạng thái: {{wstatus_all}}</p>
+            </h3>
+        </div>
+        <div style="overflow:hidden;height:100%;padding:10px;">
+            <h5>Thông tin chung</h5>
+            <table class="table" id="maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form" width="50%">Đơn vị quản lý: <span>{{org_name}}</span></td>
+                        <td class="label-form">Đơn vị thực hiện: <span>{{worg_name}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form" width="50%">Loại thực hiện: <span>{{obj_type_name}}</span></td>
+                        <td class="label-form">Kiểu công việc: <span>{{wtype_name}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Hình thức kiểm tra: <span>{{wkind_name}}</span></td>
+                        <td class="label-form">Kết quả thực hiện: <span>{{wtype_result_name}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form" width="50%" style="padding-right: 30px">Ngày bắt đầu dự báo: <span>{{toLocalDateString actual_start_date}} </span></td>
+                        <td class="label-form">Ngày kết thúc dự báo: <span>{{toLocalDateString actual_finish_date}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form" width="50%" style="padding-right: 30px">Ngày bắt đầu kế hoạch: <span>{{toLocalDateString actual_start_date}} </span></td>
+                        <td class="label-form">Ngày kết thúc kế hoạch: <span>{{toLocalDateString actual_finish_date}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form" width="50%" style="padding-right: 30px">Ngày bắt đầu thực hiện: <span>{{toLocalDateString actual_start_date}} </span></td>
+                        <td class="label-form">Ngày kết thúc thực hiện: <span>{{toLocalDateString actual_finish_date}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Mô tả tóm tắt công việc: <span> {{wdesc_info}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Mô tả chi tiết công việc: <span>{{wdesc_more}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h5>Danh sách công trình thiết bị kiểm tra</h5>
+            <table class="table table-bordered" style="width: 100%">
+                <thead>
+                    <tr>
+                        <th class='stt'>STT</th>
+                        <th>Công trình/thiết bị</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each worderAssetGroupByLayers}}
+                    <tr>
+                        <td colspan="2" class="label-form">{{@key}}</td>
+                    </tr>
+                    {{#each this}}
+                    <tr>
+                        <td class="stt"> {{counter}} </td>
+                        <td> {{asset_name}} </td>
+                    </tr>
+                    {{/each}}
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

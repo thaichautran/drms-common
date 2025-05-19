@@ -1,0 +1,33 @@
+﻿@model VietGIS.Infrastructure.Identity.ViewModels.LoggedOutViewModel;
+@{  
+    Layout = null; 
+    // set this so the layout rendering sees an anonymous user
+    ViewData["signed-out"] = true;
+    String redirectUri = string.IsNullOrWhiteSpace(Model.PostLogoutRedirectUri) ? "/" : Model.PostLogoutRedirectUri;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>@Model.ClientName</title>
+</head>
+
+<body>
+    <small>
+        Đăng xuất thành công. Đang chuyển hướng...
+    </small>
+    <p>
+        Nhấn
+        <a class="PostLogoutRedirectUri" href="/">vào đây</a> nếu trình duyệt không tự chuyển.
+    </p>
+    <script>
+        window.addEventListener("load", function () {
+            var a = document.querySelector("a.PostLogoutRedirectUri");
+            window.location = "/";
+        });
+    </script>
+</body>
+
+</html>

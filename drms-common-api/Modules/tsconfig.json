@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "outDir": "./built",
+    "allowJs": true,
+    "target": "es2017",
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "paths": {
+    },
+    "esModuleInterop": true,
+    "resolveJsonModule": true
+  },
+  "include": [
+    "./libs/**/*",
+    "src/**/*",
+    "OpenGIS.Module.CMS/Frontend/src/**/*",
+    "OpenGIS.Module.Core/Frontend/src/**/*"
+  ],  
+  "exclude": [
+    "node_modules/",
+    "build/",
+    "public/",
+    "wwwroot"
+  ]
+}

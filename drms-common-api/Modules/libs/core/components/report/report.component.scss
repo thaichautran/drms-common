@@ -1,0 +1,46 @@
+#header .logo>h1>span {
+    text-transform: initial !important;
+}
+
+#report-main {
+    background-color: #ffffff;
+}
+
+#report_view {
+    height: 100%;
+    background: #ffffff;
+
+    iframe {
+        height: 100% !important;
+    }
+    /*.dx-datagrid-pager {
+        border-top-width: 0 !important;
+    }*/
+    /*.dx-pages {
+        visibility: visible !important;
+
+        .dx-info {
+            display: none !important;
+        }
+    }*/
+}
+#report-container {
+    .dx-page-sizes {
+        .dx-dropdowneditor.dx-dropdowneditor-field-clickable {
+            width: 70px !important;
+        }
+    }
+
+    .dx-light-pages {
+        .dx-texteditor-container {
+            width: 30px !important
+        }
+    }
+}
+.dxc-tooltip {
+    z-index: 2000;
+}
+
+.dx-widget {
+    font-size: 13px;
+}

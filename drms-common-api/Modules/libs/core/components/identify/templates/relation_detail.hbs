@@ -1,0 +1,21 @@
+﻿{{!-- <div class="result-header">
+    <p>Danh sách thông tin liên quan</p>
+</div> --}}
+<div id="detail-relation-table-container">
+    <table class="table table-bordered" id="detail-relation-table">
+        <tbody>
+            {{#if this.length}}
+            {{#each this}}
+            <tr>
+                <td class="text-left">{{name_vn}}</td>
+                <td width="110" >
+                    <a href="javascript:;" class="view-detail-relation" data-id={{id}} data-name={{name_vn}}>
+                        Xem chi tiết
+                    </a>
+                </td>
+            </tr>
+            {{/each}}
+            {{/if}}
+        </tbody>
+    </table>
+</div>

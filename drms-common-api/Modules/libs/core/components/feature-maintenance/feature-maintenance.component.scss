@@ -1,0 +1,17 @@
+ul#breadCrumb {
+    padding: 0;
+    margin: 0;
+
+    li {
+        list-style-type: none;
+        display: inline;
+        white-space: nowrap;
+        font-weight: 700;
+
+        &:not(:last-child) {
+            &::after {
+                content: "→";
+            }
+        }
+    }
+}

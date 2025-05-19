@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+  <ItemGroup>
+    <PackageReference Include="EasyCaching.Redis" Version="1.9.2" />
+    <PackageReference Include="EasyCaching.ResponseCaching" Version="1.9.2" />
+    <PackageReference Include="EasyCaching.Serialization.Json" Version="1.9.2" />
+    <PackageReference Include="EasyCaching.Serialization.MessagePack" Version="1.9.2" />
+    <PackageReference Include="FirebaseAdmin" Version="2.4.0" />
+  </ItemGroup>
+</Project>

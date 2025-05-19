@@ -1,0 +1,18 @@
+﻿@{
+    Layout = null;
+}
+
+@if (User.Identity?.IsAuthenticated == true)
+{
+@*     using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm" })) *@
+@*     { *@
+@*         @Html.AntiForgeryToken() *@
+@*     } *@
+    <p>Bạn không có quyền truy cập vào khu vực này, <a href="/" style="text-decoration:underline">nhấn vào đây</a> để quay lại trang chủ.</p>
+    <p>hoặc có thể <a href="javascript:document.getElementById('logoutForm').submit()" style="text-decoration:underline;">đăng xuất</a>.</p>
+    <p>hoặc có thể <a href="/Auth/refreshIdentity?returnUrl=/" style="text-decoration:underline;">thử cập nhật lại quyền sử dụng</a>.</p>
+}
+else
+{
+    <p>Bạn chưa đăng nhập, <a href="" style="text-decoration:underline">nhấn vào đây</a> để quay lại trang chủ.</p>
+}

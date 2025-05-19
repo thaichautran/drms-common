@@ -1,0 +1,97 @@
+﻿@section Headers { @(await Html.PartialAsync("_Headers")) }
+<div class="main-inner-map">
+    <div class="wrap-col-lft">
+        <div class="col-lft-navi">
+            <div class="map-front-top">
+                <div class="map-top">
+                    <!--<nav class="map-navigation">-->
+                    <nav class="map-navigations">
+                        <ul class="nav nav-tabs" id="tabs-sidebar" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a href="#table-schema-content" data-toggle="tab" data-bs-target="#table-schema-content" role="tab" title="Schema">
+                                    <i class="icon icon-grid-6"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#layer-group-content" data-toggle="tab" data-bs-target="#layer-group-content" role="tab" title="Nhóm lớp dữ liệu">
+                                    <i class="icon icon-main-component"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#layer-content" class="active show" data-toggle="tab" data-bs-target="#layer-content" role="tab" title="Lớp dữ liệu">
+                                    <i class="icon icon-layer"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#base-layer-content" data-toggle="tab" data-bs-target="#base-layer-content" role="tab" title="Lớp nền bản đồ">
+                                    <i class="icon icon-global"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#tichhop-dulieu-content" data-toggle="tab" data-bs-target="#tichhop-dulieu-content" role="tab" title="Đồng bộ dữ liệu GPS">
+                                    <i class="icon icon-programming-arrows"></i>
+                                </a>
+                            </li>
+                            <!-- <li class="nav-item" role="presentation">
+                                <a href="#phanphoi-dulieu-content" data-toggle="tab" data-bs-target="#phanphoi-dulieu-content" role="tab" title="Phân phối csdl về HTKT">
+                                    <i class="icon icon-share"></i>
+                                </a>
+                            </li> -->
+                        </ul>
+                        <ul class="nav nav-tabs nav-tabs-bottom" id="tabs-navigate">
+                            @(await Html.PartialAsync("_UserNav"))
+                            <li>
+                                <a href="/system" title="Quay lại">
+                                    <i class="icon icon-undo"></i>
+                                </a>
+                            </li>
+                            <!-- <li>
+                                <a href="javascript:;" title="Chuyển nhanh module" class="switch-module-action switch-module">
+                                    <i class="icon icon-command"></i>
+                                </a>
+                            </li> -->
+                            <li>
+                                <a href="/" title="Trang chủ">
+                                    <i class="icon icon-home-2"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!--end map-front-top-->
+        </div>
+    </div>
+    <div class="wrap-col-main">
+        <div class="col-main-map">
+            <div class="col-main-map-inner">
+                <div class="col-lft-navi-inner">
+                    <div class="tab-content">
+                        <div class="tab-pane fade" id="table-schema-content" role="tabpanel">
+                            <div class="tab-item-container" id="table-schema-container"></div>
+                        </div>
+                        <div class="tab-pane fade" id="layer-group-content" role="tabpanel">
+                            <div class="tab-item-container" id="layer-group-container"></div>
+                        </div>
+                        <div class="tab-pane fade show active" id="layer-content" role="tabpanel">
+                            <div class="tab-item-container" id="layer-container"></div>
+                        </div>
+                        <div class="tab-pane fade" id="base-layer-content" role="tabpanel">
+                            <div class="tab-item-container" id="base-layer-container"></div>
+                        </div>
+                        <div class="tab-pane fade" id="tichhop-dulieu-content" role="tabpanel">
+                            <div class="tab-item-container" id="tichhop-dulieu-container"></div>
+                        </div>
+                        <!-- <div class="tab-pane fade" id="phanphoi-dulieu-content" role="tabpanel">
+                            <div class="tab-item-container" id="phanphoi-dulieu-container"></div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <!--end wrap-col-main-->
+        </div>
+        <!--end main-inner-map-->
+    </div>
+</div>
+@section styles { <%= htmlWebpackPlugin.tags.headTags %> }
+    @section scripts {<%= htmlWebpackPlugin.tags.bodyTags %>}

@@ -1,0 +1,272 @@
+/*************************************
+**************************************
+These are the styles for
+the navigation section
+**************************************
+**************************************/
+/* hide menu sp
+================================================== */
+#sma-search {
+  @include clearfix();
+  position: relative;
+  margin-bottom: 3rem;
+  display: none;
+  border-bottom: 1px solid #d1d5db;
+}
+
+#nav-control-sp {
+  float: left;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#sub-menu-sp {
+  display: none;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  width: 100%;
+  color: #64686e;
+  background-color: #ffffff;
+
+  @media screen and (max-width: 980px) {
+    top: 55px;
+  }
+}
+
+#sub-menu-sp .close_btn {
+  display: none;
+
+  @media screen and (max-width: 980px) {
+    display: block;
+  }
+}
+
+/* device_change
+================================================== */
+.wrap_mc_pc,
+.wrap_mc_sp {
+  display: none;
+}
+
+.disp_pc .wrap_mc_sp,
+.disp_pc .wrap_mc_sp #tmp_switch_sp_style {
+  display: block;
+}
+
+// .disp_pc #nav-control-sp,
+// .disp_pc #sub-menu-sp,
+// .device_sp #sub-menu-sp{
+//   display: none;
+// }
+
+/* sp_menu
+================================================== */
+.spmenu_open {
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+  z-index: 9999;
+  background: #ffffff;
+  color: #222222;
+}
+
+.spmenu_open #sub-menu-sp .close_btn {
+  display: block;
+}
+
+#nav-control-sp {
+  position: relative;
+  margin: 8px 0 0 5px;
+  padding: 0;
+  width: 33px;
+  height: 36px;
+  list-style: none;
+
+  @media screen and (max-width: 767px) {
+    left: -2px;
+    margin-left: 0;
+  }
+}
+
+.spmenu_open #nav-control-sp {
+  display: inline-block;
+  list-style: none;
+}
+
+.spmenu_open #sub-menu-sp {
+  display: block;
+}
+
+#nav-control-sp li a {
+  display: block;
+  width: 33px;
+  height: 36px;
+  text-decoration: none;
+}
+
+.sma_menu_open .menu_text {
+  padding-top: 33px;
+  display: block;
+  font-size: 1rem;
+  color: map-get($global-color, active);
+  line-height: 1.1;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.sma_menu_open.active .menu_text {
+  color: map-get($global-color, active);
+}
+
+.sma_menu_open {
+  position: relative;
+}
+
+.sma_menu_open .menu_icon {
+  @include border-radius(5px);
+  position: absolute;
+  top: 16px;
+  left: 0;
+  margin-left: 1px;
+  width: 27px;
+  height: 3px;
+  background-color: #ffffff;
+  color: #000000;
+  z-index: 10;
+  -moz-transition: all 0.2s ease 0s;
+  -webkit-transition: all 0.2s ease 0s;
+  transition: all 0.2s ease 0s;
+}
+
+.sma_menu_open .menu_icon:before,
+.sma_menu_open .menu_icon:after {
+  @include border-radius(5px);
+  content: '';
+  height: 3px;
+  left: 0;
+  background-color: #ffffff;
+  color: #000000;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  -moz-transition: all 0.2s ease 0s;
+  -webkit-transition: all 0.2s ease 0s;
+  transition: all 0.2s ease 0s;
+}
+
+.sma_menu_open .menu_icon:before {
+  top: -9px;
+  width: 24px;
+}
+
+.sma_menu_open .menu_icon:after {
+  top: 9px;
+  width: 30px;
+}
+
+.sma_menu_open.active .menu_icon,
+.sma_menu_open.active .menu_icon:before {
+  width: 30px;
+}
+
+/*.sma_menu_open.active {
+  // background-color: map-get($global-color, b);
+}
+
+.sma_menu_open.active .menu_icon {
+  // background-color: map-get($global-color, b);
+  background-color: transparent;
+}
+
+.sma_menu_open.active .menu_icon:before {
+  top: 0;
+  width: 30px;
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  background-color: #ffffff;
+}
+
+.sma_menu_open.active .menu_icon:after {
+  width: 30px;
+  -moz-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  background-color: #ffffff;
+  top: 0;
+}*/
+.close_btn {
+  margin: 15px;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: map-get($global-color, a);
+
+  a {
+    padding: 10px;
+    border: 2px solid map-get($global-color, active);
+    display: inline-block;
+    min-width: 200px;
+    color: map-get($global-color, a);
+
+    &:hover,
+    &:focus {
+      color: map-get($global-color, active);
+    }
+  }
+}
+
+.spmenu_open .wrap-main-map .main-inner-map .wrap-col-main .col-main-map {
+  @include transition(0.4s all ease-in-out);
+  margin-left: 0;
+}
+
+.spmenu_open .wrap-mainsite .main-inner .wrap-col-main .col-main {
+  @include transition(0.4s all ease-in-out);
+  margin-left: 0;
+}
+
+.spmenu_open .wrap-mainsite .main-inner .wrap-col-main .col-main .col-main-inner {
+  z-index: 10;
+}
+
+.fit-on .wrap-main-map .main-inner-map .wrap-col-lft {
+  width: 60px;
+  margin-right: -60px;
+
+  @media screen and (max-width: 490px) {
+    width: 60px;
+    margin-right: -60px;
+
+    .map-front-header {
+      .header-title {
+        title {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.fit-on .wrap-main-map .main-inner-map .wrap-col-lft .col-lft-navi .col-lft-navi-inner {
+  @include transition(0.2s all ease-in-out);
+  @include transform(translateX(-320px));
+}
+
+.fit-on .wrap-main-map .main-inner-map .wrap-col-main .col-main-map {
+  @include transition(0.2s all ease-in-out);
+  margin-left: 60px;
+
+  @media screen and (max-width: 490px) {
+    margin-left: 0;
+  }
+}
+
+.spmenu_open.fit-on .wrap-main-map .main-inner-map .wrap-col-main .col-main-map {
+  margin-left: 0;
+}

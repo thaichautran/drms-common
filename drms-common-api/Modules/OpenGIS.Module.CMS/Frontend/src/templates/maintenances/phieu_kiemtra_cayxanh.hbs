@@ -1,0 +1,328 @@
+<html>
+
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel='stylesheet' media='print'>
+    <style>
+        html,
+        body {
+            font-family: Verdana, Calibri, Tahoma, Arial, 'Times New Roman';
+            height: 100%;
+            width: 100%;
+        }
+
+        table {
+            margin: 0 !important;
+            border-collapse: collapse;
+        }
+
+            table tr td {
+                font-size: 11px;
+                height: 30px;
+                padding-left: 5px;
+            }
+
+            table tr th {
+                font-size: 12px;
+                height: 30px;
+            }
+
+            table:not(.table-min-none) tr td:not(.stt),
+            table:not(.table-min-none) tr th:not(.stt) {
+                min-width: 120px;
+            }
+
+            table tr th {
+                vertical-align: middle !important;
+                text-align: center;
+            }
+
+                table tr td.stt,
+                table tr th.stt {
+                    width: 50px;
+                    white-space: nowrap;
+                    text-align: center;
+                }
+
+            table ul {
+                padding-left: 10px;
+            }
+
+        .table-bordered {
+            border: 1px solid #000;
+        }
+            
+            .table-bordered > tbody > tr > td,
+            .table-bordered > tbody > tr > th,
+            .table-bordered > tfoot > tr > td,
+            .table-bordered > tfoot > tr > th,
+            .table-bordered > thead > tr > td,
+            .table-bordered > thead > tr > th {
+                border: 1px solid #000;
+            }
+
+        tr td[rowspan] {
+            vertical-align: middle !important;
+            text-align: center !important;
+        }
+
+        .report-header {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .report-content table tr td,
+        .report-content table tr th {
+            font-size: 12px;
+        }
+
+            .report-content table tr th:first-child {
+                width: 50px;
+            }
+
+        .container-table {
+            width: 100%;
+            height: 100%;
+        }
+
+        .label-form {
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .label-form span{
+            font-weight: 500!important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-table">
+        <div class="text-center" style="height:80px; text-align: center">
+            <h3 style="text-transform: uppercase;">
+                <b>PHIẾU KIỂM TRA, GIÁM SÁT CÂY XANH</b>
+                <p style="font-size: 10px; text-transform: none">Phương thức kiểm tra: {{phuongThucKiemTra.mo_ta}}</p>
+                <p style="font-size: 10px; text-transform: none">Công cụ kiểm tra: {{congCuKiemTra.mo_ta}}</p>
+            </h3>
+        </div>
+        <div style="height:auto;padding:10px;">
+            <h4>Thông tin chung</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form" width="50%">Thời tiết: <span>{{thoitiet}}</span></td>
+                        <td class="label-form">Thiết bị: <span>{{thietbi}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form" width="50%">Số nhân công: <span>{{sonhancong}}</span></td>
+                        <td class="label-form">Vị trí: <span>{{vitri}}</span></td>
+                    </tr>
+                   
+                    <tr>
+                        <td class="label-form" width="50%">Tên công trình: <span>{{tencongtrinh}}</span></td>
+                        <td class="label-form">Gói thầu số: <span>{{goithauso}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form" width="50%">Nhà thầu: <span>{{nhathau}}</span></td>
+                        <td class="label-form">Đơn vị thi công: <span>{{donvithicong}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form" width="50%" style="padding-right: 30px">Ngày thực hiện: <span>{{toLocalDateString ngaythuchien}} </span></td>
+                        <td class="label-form">Ngày kết thúc: <span>{{toLocalDateString ngayketthuc}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form" width="50%">Địa điểm: <span>{{diadiem}}</span></td>
+                        <td class="label-form">Ghi chú: <span>{{ghichu}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra công tác an toàn</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra công tác an toàn lao động:<span>{{kiemtracongtacatld}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra công tác an toàn giao thông:<span>{{kiemtracongtacatgt}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra công tác vệ sinh môi trường khu vực thi công:<span>{{kiemtractvsmtkhuvuctc}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra duy trì thảm cỏ</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra mật độ che phủ thảm cỏ:<span>{{kiemtramatdochephuthamco}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra chiều cao thảm cỏ:<span>{{kiemtrachieucaothamco}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra độ phẳng thảm cỏ:<span>{{kiemtradophangthamco}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra độ dốc về phía mép vỉa:<span>{{kiemtradodocmepviathamco}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra vệ sinh thảm cỏ:<span>{{kiemtravesinhthamco}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra tình hình sâu bệnh, cây dại:<span>{{kiemtratinhhinhsaubenhcaydaithamco}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra duy trì cây mảng, hoa lưu niên, hàng rào</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra hình khối:<span>{{kiemtrahinhkhoimanghoaluunien}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra mật độ:<span>{{kiemtramatdochephuhoaluunien}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra màu sắc:<span>{{kiemtramausachoaluunien}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra vệ sinh gốc cây:<span>{{kiemtravesinhgoccayhoaluunien}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra tình hình sâu bệnh:<span>{{kiemtratinhhinhsaubenhhoaluunien}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra tình hình ra hoa đối với cây hoa lưu niên:<span>{{kiemtratinhhinhrahoaluunien}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra duy trì cây cảnh đơn lẻ, khóm</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra độ cao:<span>{{kiemtradocaocaydonle}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra tán cây:<span>{{kiemtratancaydonle}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra màu sắc lá:<span>{{kiemtramausaclacaydonle}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra tình hình sâu bệnh:<span>{{kiemtratinhhinhsaubenhcaydonle}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra vệ sinh:<span>{{kiemtravesinhcaydonle}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra vầng gốc cây:<span>{{kiemtravanggoccaydonle}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra việc ảnh hưởng đến tầm nhìn giao thông:<span>{{kiemtraanhhuongtamnhincaydonle}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra trồng và duy trì hoa thời vụ</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra hình khối bồn, nấm hoa:<span>{{kiemtrahinhkhoibonnamhoa}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra độ tơi xốp của đất:<span>{{kiemtradotoixopcuadathoathoivu}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra vệ sinh:<span>{{kiemtravesinhhoathoivu}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra tỷ lệ cây có hoa:<span>{{kiemtratylecaycohoa}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra tình hình sâu bệnh:<span>{{kiemtratinhhinhsaubenhhoathoivu}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra màu sắc của hoa, lá:<span>{{kiemtramausachoathoivu}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra duy trì cây cảnh trồng chậu</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra độ cao:<span>{{kiemtradocaocaycanh}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra tán cây:<span>{{kiemtratancaycanh}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra màu sắc lá:<span>{{kiemtramausaclacaycanh}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra tình hình sâu bệnh:<span>{{kiemtratinhhinhsaubenhcaycanh}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra chất lượng chậu cây:<span>{{kiemtrachatluongchaucaycanh}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra vệ sinh chậu và gốc cây:<span>{{kiemtravesinhchaugoccaycanh}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra duy trì vệ sinh đường dạo, bãi đất, tượng, mặt hồ, bể cảnh</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra vệ sinh đường đào:<span>{{kiemtravesinhduongdao}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Đánh giá chất lượng thực hiện, công tác thu gom, tập kết rác:<span>{{danhgiachatluongthugomrac}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra duy trì cây bóng mát mới trồng (cây dưới 2 năm và 3 năm)</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra tình trạng cây:<span>{{kiemtratinhtrangcaybongmat}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra vệ sinh gốc cây:<span>{{kiemtravesinhgoccaybongmat}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra vầng gốc cây:<span>{{kiemtravanggoccaybongmat}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra việc cắt mầm nhánh gốc:<span>{{kiemtravieccatmamnhanhgoccaybongmat}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra quét vôi:<span>{{kiemtraquetvoicaybongmat}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra bón phân:<span>{{kiemtrabonphancaybongmat}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra cọc chống cây:<span>{{kiemtracocchongcaybongmat}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Danh sách nhân viên thực hiện</h4>
+            <table class="table table-bordered" style="width: 100%">
+                <thead>
+                    <tr>
+                        <th class='stt'>STT</th>
+                        <th>Tên nhân viên</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each giaoViecNhanViens}}
+                    <tr>
+                        <td class="stt"> {{counter}} </td>
+                        <td> {{nhanVien.tennhanvien}} </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

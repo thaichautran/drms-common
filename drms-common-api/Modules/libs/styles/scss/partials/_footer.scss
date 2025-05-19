@@ -1,0 +1,111 @@
+/*************************************
+**************************************
+These are the styles for
+the footer section
+**************************************
+**************************************/
+
+#footer {
+  @include clearfix();
+  position: relative;
+  min-height: 150px;
+  clear: both;
+  text-align: center;
+  color: map-get($global-color, a);
+  background: url(#{$base-url}/bg-footer@2x.png) no-repeat center center map-get($global-color, accent) scroll;
+  background-size: 630px auto;
+  -webkit-background-size: 630px auto;
+  .container{
+    @include clearfix();
+    padding: 3rem 1.5rem 2rem;
+    @media screen and (max-width: 650px) {
+      padding: 4rem 1.5rem 2.5rem;
+    }
+  }
+  p{
+    margin-bottom: 0.5rem;
+  }
+  .footer-heading{
+    margin-bottom: 1rem;
+    font-size: 1.7rem;
+    color: #FFFFFF;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .footer-cnt{
+    @include clearfix();
+    address{
+      margin: 0 0 1rem;
+      font-size: 1.3rem;
+      font-weight: normal;
+      a{
+        color: map-get($global-color, a);
+        &:hover,
+        &:focus{
+          text-decoration: underline;
+        }
+      }
+    }
+    p{
+      margin: 0;
+    }
+    .copyright{
+      opacity: 0.6;
+    }
+  }
+  @media screen and (max-width: 1150px) {
+    background-size: contain;
+    -webkit-background-size: contain;
+  }
+  
+}
+.back-top {
+  position: absolute;
+  right: 15px;
+  top: -23px;
+  bottom: auto;
+  z-index: 20;
+  display: none;
+  width: 51px;
+  height: 51px;
+  a {
+    @include border-radius(50%);
+    position: relative;
+    z-index: 100;
+    display: block;
+    width: 51px;
+    height: 51px;
+    color: map-get($global-color, a);
+    background-image: linear-gradient(138deg, #FFB055 0%, #FF7C00 100%);
+    background: #C52918;
+    &:before {
+      @include transform(rotate(-135deg));
+      position: absolute;
+      left: 18px;
+      top: 20px;
+      content: "";
+      border: solid #ffffff;
+      border-width: 0 3px 3px 0;
+      display: inline-block;
+      padding: 6px;
+    }
+    &:hover,
+    &:focus {
+      @include box-shadow(0 3px 8px rgba(0, 0, 0, 0.1));
+      opacity: 1;
+      background-image: linear-gradient(138deg, #FF7C00 0%, #FFB055 100%);
+      background: #C52918;
+    }
+  }
+  @media screen and (max-width: 580px) {
+    bottom: 15px;
+  }
+  @media screen and (max-width: 450px) {
+    bottom: 2px;
+  }
+}
+.back-top-fixed{
+  position: fixed;
+  bottom: 10px;
+  top: auto;
+}

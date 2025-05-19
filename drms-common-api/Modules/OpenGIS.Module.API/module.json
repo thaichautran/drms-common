@@ -1,0 +1,7 @@
+{
+    "id": "OpenGIS.Module.API",
+    "name": "API",
+    "isBundledWithHost": true,
+    "enabled": true,
+    "version": "1.0.0"
+}

@@ -1,0 +1,64 @@
+﻿@section Headers {
+@(await Html.PartialAsync("_Headers"))
+}
+<div class="main-inner-map">
+    <div class="wrap-col-lft">
+        <div class="col-lft-navi">
+            <div class="map-front-top">
+                <div class="map-top">
+                    <!--<nav class="map-navigation">-->
+                    <nav class="map-navigations">
+                        <ul class="nav nav-tabs" id="tabs-sidebar" role="tablist">
+                            <li class="nav-item category" role="presentation">
+                                <a href="#thematic-report-content" class="nav-item-identify active show" data-toggle="tab" data-bs-target="#thematic-report-content" role="tab" title="Báo cáo">
+                                    <i class="icon icon-receipt"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item category" role="presentation">
+                                <a href="#synthesis-report-content" class="nav-item-identify" data-toggle="tab" data-bs-target="#synthesis-report-content" role="tab" title="Mẫu báo cáo có sẵn">
+                                    <i class="icon icon-receipt-1"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-tabs nav-tabs-bottom" id="tabs-navigate">
+                            @(await Html.PartialAsync("_UserNav"))
+                            <li>
+                                <a href="/cms/map?id=@ViewBag.mapId" title="Quay lại">
+                                    <i class="icon icon-undo"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/" title="Trang chủ">
+                                    <i class="icon icon-home-2"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!--end map-front-top-->
+        </div>
+    </div>
+    <div class="wrap-col-main">
+        <div class="col-main-map">
+            <div class="col-main-map-inner">
+                <div class="col-lft-navi-inner">
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="thematic-report-content" role="tabpanel">
+                            <div class="tab-item-container" id="thematic-report-container">
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="synthesis-report-content" role="tabpanel">
+                            <div class="tab-item-container" id="synthesis-report-container">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end wrap-col-main-->
+        </div>
+        <!--end main-inner-map-->
+    </div>
+</div>
+@section scripts {<%= htmlWebpackPlugin.tags.bodyTags %>}
+    @section styles {<%= htmlWebpackPlugin.tags.headTags %>}

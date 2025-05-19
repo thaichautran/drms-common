@@ -1,0 +1,77 @@
+<div class="identify-heading-wrap">
+    <div class="identify-top-heading">
+        <span>Xem thông tin đối tượng</span>
+        <div class="close-identify-btn">
+            <a href="javascript:;">
+                <span class="icon-close icon-revert">&nbsp;</span>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="identify-toolbar-wrap">
+    <a href="javascript:;" id="zoomTo" style="margin-right: 10px;">
+        <i class="icon icon-search-zoom-in"></i>
+        Phóng to
+    </a>
+    <a href="javascript:;" id="viewRelation" style="margin-right: 10px;">
+        <i class="icon icon-hierarchy"></i>
+        Thống kê tài sản liên quan
+    </a>
+    <a href="javascript:;" id="viewSimulation" style="margin-right: 10px;">
+        <i class="icon icon-educare-ekt"></i>
+        Mô phỏng hiện trạng
+    </a>
+</div>
+<div class="identify-content-wrap">
+    <div class="identify-content-top">
+        <nav class="navigations">
+            <ul class="nav nav-tabs" id="tabs-identify" role="tablist">
+                <li class="nav-item identify-result-tab active" role="presentation">
+                    <a href="#identify-result-content" class="nav-item-identify identify-result active" data-toggle="tab" data-bs-target="#identify-result-content" role="tab">Kết quả</a>
+                </li>
+                <li class="nav-item detail-result-tab" role="presentation">
+                    <a href="#detail-result-content" class="nav-item-identify detail-result" data-toggle="tab" data-bs-target="#detail-result-content" role="tab">Chi tiết</a>
+                </li>
+                <li class="nav-item relation-result-tab" role="presentation" style="display: none;">
+                    <a href="#detail-relation-content" class="nav-item-identify detail-relation" data-toggle="tab" data-bs-target="#detail-relation-content" role="tab">Chi tiết thông tin liên quan</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="identify-content">
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="identify-result-content" role="tabpanel">
+                <div class="result-header">
+                    <p>Có {{total}} kết quả</p>
+                </div>
+                <div id="identify-result-table-container">
+                    <table class="table table-bordered" id="identify-result-table">
+                        <thead>
+                            <tr>
+                                <!--<td>ID</td>-->
+                                <td width="70px" class="text-center">STT</td>
+                                <td>Tên đối tượng</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each grouped}}
+                            <tr>
+                                <td colspan="2" class="text-left" style="font-weight: 700;">{{@key}} ({{this.length}})</td>
+                            </tr>
+                            {{#each this}}
+                            <tr>
+                                <!--<td width="10%">{{fid}}</td>-->
+                                <td width="50px" style="text-align: center">{{increment @key}}</td>
+                                <td class="view-detail-identify">{{label}}<a class="icon-up-arrow" href="javascript:;" data-id="{{fid}}" data-layer-id="{{layer_id}}" data-layer-name="{{layer_name}}"></a></td>
+                            </tr>
+                            {{/each}}
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="detail-result-content" role="tabpanel"></div>
+            <div class="tab-pane fade" id="detail-relation-content" role="tabpanel"></div>
+        </div>
+    </div>
+</div>

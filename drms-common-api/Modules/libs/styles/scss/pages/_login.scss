@@ -1,0 +1,71 @@
+.format-login {
+    background: url("../images/front/bg_login.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    .wrap-main-map {
+        display: flex;
+    }
+
+    .popup-login {
+        display: flex;
+        flex-direction: column;
+        -webkit-border-radius: 0 0 4px 4px;
+        -moz-border-radius: 0 0 4px 4px;
+        -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, .5);
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, .5);
+        font-size: 1.3rem;
+        margin: auto;
+        width: auto;
+        min-width: 300px;
+        max-width: 362px;
+        height: auto;
+        text-align: left;
+        background-color: #fff;
+        border-radius: 8px;
+
+        .popup-login-button {
+            >.dx-button {
+                width: 100%;
+            }
+        }
+
+        .popup-login-logo {
+            width: 100px;
+            height: 100px;
+            margin-top: -65px;
+            margin-bottom: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .popup-login-logo-text {
+            text-align: center;
+
+            .popup-login-site-name {
+                font-size: 17px;
+                font-weight: bold;
+                justify-content: center;
+                color: #2C3090;
+                text-transform: uppercase;
+                margin-bottom: 0;
+                font-family: 'Reddit Sans Condensed';
+            }
+
+            .popup-login-site-subtitle {
+                font-size: 18px;
+                font-weight: bold;
+                justify-content: center;
+                color: #DF6C0C;
+                text-transform: capitalize;
+                font-family: 'Reddit Sans Condensed';
+                max-width: 400px;
+                margin: auto;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+        }
+    }
+}

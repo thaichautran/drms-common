@@ -1,0 +1,27 @@
+ul#breadCrumb {
+    padding: 0;
+    margin: 0;
+
+    li {
+        list-style-type: none;
+        display: inline;
+        white-space: nowrap;
+        font-weight: 700;
+        font-size: 13px;
+
+        &:not(:last-child) {
+            &::after {
+                content: "→";
+            }
+        }
+    }
+}
+.relation-feature-tree .dx-treeview-item .dx-item-content.dx-treeview-item-content ul.relation-feature-tools {
+    list-style-type: none;
+    margin-left: auto;
+    padding: 0;
+}
+
+.relation-feature-tree .dx-treeview-item .dx-item-content.dx-treeview-item-content {
+    display: flex;
+}

@@ -1,0 +1,45 @@
+import { OGPhieuKiemTraModel } from "./kiem-tra.model";
+
+class OGPhieuGiamSatKiemTraCayXanhModel extends OGPhieuKiemTraModel {
+    public kiemtraanhhuongtamnhincaydonle? : string;
+    public kiemtrabonphancaybongmat? : string;
+    public kiemtrachatluongchaucaycanh? : string;
+    public kiemtrachieucaothamco? : string;
+    public kiemtracocchongcaybongmat? : string;
+    public kiemtradocaocaycanh? : string;
+    public kiemtradocaocaydonle? : string;
+    public kiemtradodocmepviathamco? : string;
+    public kiemtradophangthamco? : string;
+    public kiemtradotoixopcuadathoathoivu? : string;
+    public kiemtrahinhkhoibonnamhoa? : string;
+    public kiemtrahinhkhoimanghoaluunien? : string;
+    public kiemtramatdochephuhoaluunien? : string;
+    public kiemtramatdochephuthamco? : string;
+    public kiemtramausachoaluunien? : string;
+    public kiemtramausachoathoivu? : string;
+    public kiemtramausaclacaycanh? : string;
+    public kiemtramausaclacaydonle? : string;
+    public kiemtraquetvoicaybongmat? : string;
+    public kiemtratancaycanh? : string;
+    public kiemtratancaydonle? : string;
+    public kiemtratinhhinhrahoaluunien? : string;
+    public kiemtratinhhinhsaubenhcaycanh? : string;
+    public kiemtratinhhinhsaubenhcaydaithamco? : string;
+    public kiemtratinhhinhsaubenhcaydonle? : string;
+    public kiemtratinhhinhsaubenhhoaluunien? : string;
+    public kiemtratinhhinhsaubenhhoathoivu? : string;
+    public kiemtratinhtrangcaybongmat? : string;
+    public kiemtratylecaycohoa? : string;
+    public kiemtravanggoccaybongmat? : string;
+    public kiemtravanggoccaydonle? : string;
+    public kiemtravesinhcaydonle? : string;
+    public kiemtravesinhchaucaycanh? : string;
+    public kiemtravesinhchaugoccaycanh? : string;
+    public kiemtravesinhduongdao? : string;
+    public kiemtravesinhgoccaybongmat? : string;
+    public kiemtravesinhgoccayhoaluunien? : string;
+    public kiemtravesinhhoathoivu? : string;
+    public kiemtravesinhthamco? : string;
+    public kiemtravieccatmamnhanhgoccaybongmat? : string;
+}
+export {OGPhieuGiamSatKiemTraCayXanhModel};

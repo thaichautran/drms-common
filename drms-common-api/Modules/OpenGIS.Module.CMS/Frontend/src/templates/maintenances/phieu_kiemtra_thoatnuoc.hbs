@@ -1,0 +1,353 @@
+<html>
+
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel='stylesheet'
+          media='screen,print'>
+    <style>
+        html,
+        body {
+            font-family: Verdana, Calibri, Tahoma, Arial, 'Times New Roman';
+            height: 100%;
+            width: 100%;
+        }
+
+        table {
+            margin: 0 !important;
+            border-collapse: collapse;
+        }
+
+            table tr td {
+                font-size: 11px;
+                height: 30px;
+                padding-left: 5px;
+            }
+
+            table tr th {
+                font-size: 12px;
+                height: 30px;
+            }
+
+            table:not(.table-min-none) tr td:not(.stt),
+            table:not(.table-min-none) tr th:not(.stt) {
+                min-width: 120px;
+            }
+
+            table tr th {
+                vertical-align: middle !important;
+                text-align: center;
+            }
+
+                table tr td.stt,
+                table tr th.stt {
+                    width: 50px;
+                    white-space: nowrap;
+                    text-align: center;
+                }
+
+            table ul {
+                padding-left: 10px;
+            }
+
+        .table-bordered {
+            border: 1px solid #000;
+        }
+            
+            .table-bordered > tbody > tr > td,
+            .table-bordered > tbody > tr > th,
+            .table-bordered > tfoot > tr > td,
+            .table-bordered > tfoot > tr > th,
+            .table-bordered > thead > tr > td,
+            .table-bordered > thead > tr > th {
+                border: 1px solid #000;
+            }
+
+        tr td[rowspan] {
+            vertical-align: middle !important;
+            text-align: center !important;
+        }
+
+        .report-header {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .report-content table tr td,
+        .report-content table tr th {
+            font-size: 12px;
+        }
+
+            .report-content table tr th:first-child {
+                width: 50px;
+            }
+
+        .container-table {
+            width: 100%;
+            height: 100%;
+        }
+
+        .label-form {
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .label-form span{
+            font-weight: 500!important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-table">
+        <div class="text-center" style="height:80px; text-align: center">
+            <h3 style="text-transform: uppercase;">
+                <b>PHIẾU KIỂM TRA, GIÁM SÁT THOÁT NƯỚC</b>
+                <p style="font-size: 10px; text-transform: none">Phương thức kiểm tra: {{phuongThucKiemTra.mo_ta}}</p>
+                <p style="font-size: 10px; text-transform: none">Công cụ kiểm tra: {{congCuKiemTra.mo_ta}}</p>
+            </h3>
+        </div>
+        <div style="height:100%;padding:10px;">
+            <h4>Thông tin chung</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form" width="50%">Thời tiết: <span>{{thietbi}}</span></td>
+                        <td class="label-form">Thiết bị: <span>{{thietbi}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form" width="50%">Số nhân công: <span>{{sonhancong}}</span></td>
+                        <td class="label-form">Vị trí: <span>{{vitri}}</span></td>
+                    </tr>
+                   
+                    <tr>
+                        <td class="label-form" width="50%">Tên công trình: <span>{{tencongtrinh}}</span></td>
+                        <td class="label-form">Gói thầu số: <span>{{goithauso}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form" width="50%">Nhà thầu: <span>{{nhathau}}</span></td>
+                        <td class="label-form">Đơn vị thi công: <span>{{donvithicong}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form" width="50%" style="padding-right: 30px">Ngày thực hiện: <span>{{toLocalDateString ngaythuchien}} </span></td>
+                        <td class="label-form">Ngày kết thúc: <span>{{toLocalDateString ngayketthuc}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form" width="50%">Địa điểm: <span>{{diadiem}}</span></td>
+                        <td class="label-form">Ghi chú: <span>{{ghichu}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra công tác an toàn</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra công tác an toàn lao động:<span>{{kiemtracongtacatld}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra công tác an toàn giao thông:<span>{{kiemtracongtacatgt}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra công tác vệ sinh môi trường khu vực thi công:<span>{{kiemtractvsmtkhuvuctc}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra vệ sinh:<span>{{kiemtravesinh}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra công tác thu gom rác:<span>{{kiemtracongtacthugomrac}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra tập kết rác:<span>{{kiemtracongtacthugomrac}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra cống thoát nước</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra độ cao đáy cống:<span>{{kiemtracaododaycongthoatnuoc}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra cao độ mực nước trong lòng cống:<span>{{kiemtracaodomucnuoctronglongcong}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra hướng tuyến thoát nước:<span>{{kiemtrahuongtuyenthoatnuoc}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra chất liệu:<span>{{kiemtrachatlieucongthoatnuoc}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra tập đường kính, tiết diện:<span>{{kiemtratietdiencongthoatnuoc}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra cửa xả</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra cao độ mực nước thiết kế:<span>{{kiemtracaodomucnuoccuaxa}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra độ phẳng:<span>{{kiemtradophangcuaxa}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra kích thước cửa xả:<span>{{kiemtrakichthuoccuaxa}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra thời điểm nạo vét gần nhất:<span>{{kiemtrathoidiemnaovetcuaxa}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra mương, sông</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra mực nước:<span>{{kiemtramucnuocmuongsong}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra kích thước:<span>{{kiemtrakichthuocmuongsong}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra công tác xử lý bùn:<span>{{kiemtracongtacxulybunmuongsong}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra thời gian nạo vét:<span>{{kiemtrathoigiannaovetmuongsong}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra cổng, đập điều tiết:<span>{{kiemtracongdapmuongsong}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra hồ điều hòa</h5>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra mực nước:<span>{{kiemtramucnuochodieuhoa}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra thiết bị đo mực nước:<span>{{kiemtrathietbidomucnuochodieuhoa}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra lịch sử xử lý chất lượng nước:<span>{{kiemtralichsuxulychatluongnuoc}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra thời gian nạo vét:<span>{{kiemtrathoigiannaovethodieuhoa}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra cao độ, các đài, bè:<span>{{kiemtracaodohodieuhoa}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra hố ga thăm</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra kích thước:<span>{{kiemtrakichthuochoga}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra công nghệ xử lý:<span>{{kiemtracongnghexulyhoga}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra công suất tiếp nhận:<span>{{kiemtracongsuattiepnhanhoga}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra công nghệ thiết kế:<span>{{kiemtracongsuatthietkehoga}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra hệ thống cân:<span>{{kiemtrahethongcanhoga}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra thiết bị thi công:<span>{{kiemtrathietbithiconghoga}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra trạm bơm thoát nước</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra tình trạng hoạt động của máy bơm:<span>{{kiemtratinhtranghoatdongmaybom}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra nhà máy xử lý nước thải</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra mực nước:<span>{{kiemtramucnuocnhamayxlnt}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra tình trạng hoạt động của máy bơm:<span>{{kiemtratinhtrangmaybomnhamayxlnt}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra rãnh thoát nước</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra độ cao:<span>{{kiemtradocaoranhthoatnuoc}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra độ phẳng:<span>{{kiemtradophangranhthoatnuoc}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra độ dốc về phía mép vỉa:<span>{{kiemtradodocmepviaranhthoatnuoc}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra điểm đen ngập úng</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra diện tích điểm ngập úng:<span>{{kiemtradientichngapungdiemden}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra độ sâu điểm ngập úng:<span>{{kiemtradosaudiemngapung}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra trụ cứu hỏa</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra mực nước:<span>{{kiemtramucnuoctrucuuhoa}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra tình trạng hoạt động của máy bơm:<span>{{kiemtratinhtrangmaybomtrucuuhoa}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra các thiết bị máy móc vận hành:<span>{{kiemtrathietbitrucuuhoa}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra đường ống gắn trụ cứu hỏa:<span>{{kiemtraduongonggantrucuuhoa}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra áp suất nước:<span>{{kiemtraapsuatnuoctrucuuhoa}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra vật liệu cứu hỏa:<span>{{kiemtravatlieucuuhoa}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra hệ thống giám sát chất lượng nước:<span>{{kiemtrahethonggscltrucuuhoa}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Danh sách nhân viên thực hiện</h4>
+            <table class="table table-bordered" style="width: 100%">
+                <thead>
+                    <tr>
+                        <th class='stt'>STT</th>
+                        <th>Tên nhân viên</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each giaoViecNhanViens}}
+                    <tr>
+                        <td class="stt"> {{counter}} </td>
+                        <td> {{nhanVien.tennhanvien}} </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

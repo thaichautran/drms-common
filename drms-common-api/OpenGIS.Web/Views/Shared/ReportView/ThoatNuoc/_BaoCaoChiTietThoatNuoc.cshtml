@@ -1,0 +1,358 @@
+@{
+    Layout = null;
+}
+@using System.Data;
+@using System.Linq;
+@using Dapper;
+@using System.Globalization;
+@using OpenGIS.Module.Core.Helpers
+@using OpenGIS.Module.Core.ViewModels;
+@model RenderBaoCaoTongHopDuLieuChiTietViewModel;
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel='stylesheet' media='screen,print'>
+    <style>
+        html,
+        body {
+            font-family: "Reddit Sans", "Helvetica Neue", "Segoe UI", "helvetica", "verdana", "sans-serif";
+        }
+
+        table {
+            margin: 0 !important;
+            position: relative;
+            border-collapse: separate;
+            border: 1px solid #000;
+        }
+
+        table tr td {
+            font-size: 11px;
+        }
+
+        table tr th {
+            font-size: 11px;
+        }
+
+        table:not(.table-min-none) tr td:not(.stt),
+        table:not(.table-min-none) tr th:not(.stt) {
+    using OpenGIS.Module.API.Controllers;
+    using SixLabors.ImageSharp.ColorSpaces;
+    using Microsoft.EntityFrameworkCore.Metadata.Internal;
+            min-width: 150px;
+        }
+
+        table thead {
+            background: white;
+            position: sticky;
+            top: 0;
+            border: 1px solid #000 !important;
+            z-index: 100;
+        }
+
+        table thead th {
+            border: 1px solid #000 !important;
+            vertical-align: middle !important;
+            text-align: center;
+            font-weight: bolder;
+        }
+
+        table tr td.stt,
+        table tr th.stt {
+            width: 50px;
+            white-space: nowrap;
+            text-align: center;
+            width: 50px;
+            min-width: 50px;
+            max-width: 50px;
+            left: 0px;
+            position: -webkit-sticky;
+            position: sticky;
+            border: 1px solid #000 !important;
+            background-color:white;
+            z-index: 99;
+        }
+
+        table ul {
+            padding-left: 10px;
+        }
+
+        .table-bordered {
+            border: 1px solid #000;
+        }
+
+        .table-bordered>tbody>tr>td,
+        .table-bordered>tbody>tr>th,
+        .table-bordered>tfoot>tr>td,
+        .table-bordered>tfoot>tr>th,
+        .table-bordered>thead>tr>td,
+        .table-bordered>thead>tr>th {
+            border: 1px solid #000 !important;
+        }
+
+        tr td[rowspan] {
+            vertical-align: middle !important;
+            text-align: center !important;
+        }
+
+        .report-header {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .second-col {
+            width: 150px;
+            min-width: 150px;
+            max-width: 150px;
+            left: 50px;
+            position: -webkit-sticky;
+            position: sticky;
+            background-color:white;
+            border: 1px solid #000 !important;
+            z-index: 99;
+        }
+
+        .report-content table tr td,
+        .report-content table tr th {
+            font-size: 11px;
+        }
+
+        .report-content table tr th:first-child {
+            width: 50px;
+        }
+
+        .container-table {
+            width: 100%;
+            /*height: 89%;
+            overflow: auto;*/
+        }
+
+        p {
+            margin: unset;
+            text-align: right !important;
+        }
+
+        p.sum {
+            font-weight: bold;
+        }
+
+        p.sum-child {
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .font-weight-bolder {
+            font-weight: bolder;
+        }
+
+        .group-td {
+            @* background-color: #05478d; *@
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="text-center">
+        <h3 style="text-transform: uppercase;">
+            <b> BÁO CÁO CHi TIẾT CƠ SỞ DỮ LIỆU MẠNG LƯỚI THOÁT NƯỚC</b>
+            <br>
+            <b> THÀNH PHỐ HÀ NỘI</b>
+        </h3>
+        <span style="font-style: italic;"> Ngày @DateTime.Now.ToString("dd/MM/yyyy")</span>
+    </div>
+    <div class="container-table" style="margin-top: 10px;">
+        <table class="table table-bordered">
+             <thead>
+                <tr>
+                    <th rowspan="2" class="stt">STT</th>
+                    <th class="second-col" rowspan="2">ĐƠN VỊ HÀNH CHÍNH</th>
+                    <th colspan="2">CỐNG THOÁT NƯỚC</th>
+                    <th colspan="2">RÃNH THOÁT NƯỚC</th>
+                    <th colspan="2">HỐ GA</th>
+                    <th colspan="2">TRẠM/NHÀ MÁY XỬ LÝ NƯỚC THẢI</th>
+                    <th colspan="2">HỒ ĐIỀU HÒA</th>
+                    <th colspan="2">MƯƠNG SÔNG</th>
+                    <th colspan="2">CỬA XẢ</th>
+                    <th colspan="2">TRẠM BƠM</th>
+                </tr>
+                <tr>
+                    <th >Sở Xây Dựng Quản lý</th>
+                    <th >Quận / Huyện / Tx Quản lý</th>
+                    <th >Sở Xây Dựng Quản lý</th>
+                    <th >Quận / Huyện / Tx Quản lý</th>
+                    <th >Sở Xây Dựng Quản lý</th>
+                    <th >Quận / Huyện / Tx Quản lý</th>
+                    <th >Sở Xây Dựng Quản lý</th>
+                    <th >Quận / Huyện / Tx Quản lý</th>
+                    <th >Sở Xây Dựng Quản lý</th>
+                    <th >Quận / Huyện / Tx Quản lý</th>
+                    <th >Sở Xây Dựng Quản lý</th>
+                    <th >Quận / Huyện / Tx Quản lý</th>
+                    <th >Sở Xây Dựng Quản lý</th>
+                    <th >Quận / Huyện / Tx Quản lý</th>
+                    <th >Sở Xây Dựng Quản lý</th>
+                    <th >Quận / Huyện / Tx Quản lý</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="stt"></td>
+                    <td class="second-col text-center font-weight-bolder">Tổng</td>
+                        <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_congthoatnuoc").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_congthoatnuoc").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_ranhthoatnuoc").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_ranhthoatnuoc").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_hoga").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_hoga").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_nhamayxulynuocthai").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_nhamayxulynuocthai").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_hodieuhoa").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_hodieuhoa").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_muongthoatnuoc").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_muongthoatnuoc").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_cuaxa").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_cuaxa").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_trambomthoatnuoc").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_trambomthoatnuoc").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                </tr>
+                @{
+                    
+                    var groups = @Model?.records?.GroupBy(y => y.district).Select(y => new {
+                        district = y.Key,
+                        tuyen = y.GroupBy(x => x.matuyen).Select(x => new {
+                            matuyen = x.Key,
+                            tentuyen = x.FirstOrDefault()?.tentuyen,
+                            records = x
+                        })
+                    });
+                    var listKichThuocCong = Model?.records?.Where(x => x.table_name == "tn_congthoatnuoc").Select(x => x.loai).Distinct();
+                    var listKichThuocRanh = Model?.records?.Where(x => x.table_name == "tn_ranhthoatnuoc").Select(x => x.loai).Distinct();
+                    var listLoaiGa = Model?.records?.Where(x => x.table_name == "tn_hoga").Select(x => x.loai).Distinct();
+                    var index = @Model?.index;
+                    foreach (var data in groups)
+                    {
+                        <tr class="group-td">
+                            <td class="text-center stt"></td>
+                            <td class="text-left second-col">@(data.district)</td>
+                            <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_congthoatnuoc"&& x.district == data.district).Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_congthoatnuoc"&& x.district == data.district).Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_ranhthoatnuoc"&& x.district == data.district).Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_ranhthoatnuoc"&& x.district == data.district).Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_hoga"&& x.district == data.district).Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_hoga"&& x.district == data.district).Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_nhamayxulynuocthai"&& x.district == data.district).Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_nhamayxulynuocthai"&& x.district == data.district).Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_hodieuhoa"&& x.district == data.district).Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_hodieuhoa"&& x.district == data.district).Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_muongthoatnuoc"&& x.district == data.district).Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_muongthoatnuoc"&& x.district == data.district).Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_cuaxa"&& x.district == data.district).Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_cuaxa"&& x.district == data.district).Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_trambomthoatnuoc"&& x.district == data.district).Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@Model?.totals?.Where(x => x.table_name == "tn_trambomthoatnuoc"&& x.district == data.district).Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        </tr>
+                        foreach(var tuyen in data?.tuyen)
+                        { 
+                        <tr class="group-td">
+                            <td class="text-center stt">@(++index)</td>
+                            <td class="text-left second-col">@(tuyen.tentuyen ?? tuyen.matuyen)</td>
+                            <td class="text-right font-weight-bolder">@tuyen?.records?.Where(x => x.table_name == "tn_congthoatnuoc").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@tuyen?.records?.Where(x => x.table_name == "tn_congthoatnuoc").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@tuyen?.records?.Where(x => x.table_name == "tn_ranhthoatnuoc").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@tuyen?.records?.Where(x => x.table_name == "tn_ranhthoatnuoc").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@tuyen?.records?.Where(x => x.table_name == "tn_hoga").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@tuyen?.records?.Where(x => x.table_name == "tn_hoga").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@tuyen?.records?.Where(x => x.table_name == "tn_nhamayxulynuocthai").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@tuyen?.records?.Where(x => x.table_name == "tn_nhamayxulynuocthai").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@tuyen?.records?.Where(x => x.table_name == "tn_hodieuhoa").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@tuyen?.records?.Where(x => x.table_name == "tn_hodieuhoa").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@tuyen?.records?.Where(x => x.table_name == "tn_muongthoatnuoc").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@tuyen?.records?.Where(x => x.table_name == "tn_muongthoatnuoc").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@tuyen?.records?.Where(x => x.table_name == "tn_cuaxa").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@tuyen?.records?.Where(x => x.table_name == "tn_cuaxa").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@tuyen?.records?.Where(x => x.table_name == "tn_trambomthoatnuoc").Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right font-weight-bolder">@tuyen?.records?.Where(x => x.table_name == "tn_trambomthoatnuoc").Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        </tr>
+                        var child = 0;
+                        foreach(var item in listKichThuocCong)
+                        {
+                        <tr class="group-td">
+                            <td class="text-center stt">@(index + "." + (++child))</td>
+                            <td class="text-right second-col">@(item ?? "Không xác định")</td>
+                            <td class="text-right">@tuyen?.records?.Where(x => x.table_name == "tn_congthoatnuoc" && x.loai == item).Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right">@tuyen?.records?.Where(x => x.table_name == "tn_congthoatnuoc" && x.loai == item).Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                        </tr>
+                        }
+                         foreach(var item in listKichThuocRanh)
+                        {
+                        <tr class="group-td">
+                            <td class="text-center stt">@(index + "." + (++child))</td>
+                            <td class="text-right second-col">@(item ?? "Không xác định")</td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right">@tuyen?.records?.Where(x => x.table_name == "tn_ranhthoatnuoc" && x.loai == item).Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right">@tuyen?.records?.Where(x => x.table_name == "tn_ranhthoatnuoc" && x.loai == item).Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                        </tr>
+                        }
+                        foreach(var item in listLoaiGa)
+                        {
+                        <tr class="group-td">
+                            <td class="text-center stt">@(index + "." + (++child))</td>
+                            <td class="text-right second-col">@(item ?? "Không xác định")</td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right">@tuyen?.records?.Where(x => x.table_name == "tn_hoga" && x.loai == item).Sum(x => x.solieu_so)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right">@tuyen?.records?.Where(x => x.table_name == "tn_hoga" && x.loai == item).Sum(x => x.solieu_quan)?.ToString("#,##0.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                            <td class="text-right"></td>
+                        </tr>
+                        }
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+
+
+</html>

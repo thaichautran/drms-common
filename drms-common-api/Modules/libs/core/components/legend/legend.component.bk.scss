@@ -1,0 +1,41 @@
+ul.legends {
+    overflow: auto;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    >li {
+        list-style-type: none;
+
+        >ul {
+            list-style-type: none;
+        }
+    }
+
+    span.layer-group-name {
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+    td {
+        span.layer-name {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        span.legend-name {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        &.symbol {
+            width: 36px;
+            padding: 5px 0px 0px 10px;
+
+            canvas {
+                margin-top: 4px;
+                margin-right: 8px;
+            }
+        }
+    }
+}

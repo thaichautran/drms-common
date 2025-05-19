@@ -1,0 +1,226 @@
+/*************************************
+**************************************
+These are the styles for
+the home page
+**************************************
+**************************************/
+// $grid-breakpoints: (
+//   xs: 0, Extra small screen / phone
+//   sm: 576px, Small screen / phone
+//   md: 768px, Medium screen / tablet
+//   lg: 992px, Large screen / desktop
+//   xl: 1200px, Extra large screen / wide desktop
+// );
+
+// $container-max-widths: (
+//   sm: 540px,
+//   md: 720px,
+//   lg: 960px,
+//   xl: 1140px
+// ); 
+
+
+/* 
+media-breakpoint-up: min-width
+media-breakpoint-down: max-width 
+@include media-breakpoint-up(sm) {
+  text-align: left;
+}
+@include media-breakpoint-down(sm){
+  text-align: right;
+}
+*/
+/*====================================
+Home
+=====================================*/
+.define-top {
+  height: auto;
+  color: inherit;
+  background: url(#{$base-url}/bg_home.png) repeat center top scroll transparent;
+  background-size: cover;
+  -webkit-background-size: cover;
+
+  #wrapper {
+    min-height: 100vh;
+  }
+}
+
+.section-management {
+  padding: 0 0 1.5rem;
+  @include clearfix();
+
+  @media screen and (max-width: 1150px) {
+    padding: 3.5rem 0 2.5rem;
+  }
+}
+
+.management-heading {
+  margin-bottom: 2.5rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  color: map-get($global-color, accent);
+
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+}
+
+.management-cate {
+  margin: auto;
+  overflow: auto;
+}
+
+.management-list {
+  @include equal_height();
+  list-style: none;
+  padding: 0;
+  margin: 0 -10px;
+  justify-content: center;
+
+  .management-item {
+    padding: 0 10px;
+    margin: 1rem 0;
+    float: left;
+    width: 20%;
+
+    >a {
+      transition: 0.3s;
+
+      &:hover {
+        .management-box {
+          background-color: #DF6C0C;
+          color: #FFFFFF;
+
+          .management-image {
+            background-color: #FFECDB;
+
+            img {
+              width: 100px;
+              height: 100px;
+            }
+          }
+
+          .management-body {
+            p {
+              color: #FFFFFF;
+            }
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 1150px) {
+      width: 50%;
+    }
+
+    @media screen and (max-width: 767px) {
+      width: 50%;
+      padding: 0 7px;
+      margin-bottom: 15px;
+    }
+
+    @media screen and (max-width: 576px) {
+      width: 100%;
+      float: none;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    margin: 0 -7px;
+  }
+}
+
+.management-box,
+a.management-box {
+  @include clearfix();
+  @include border-radius(6px);
+  @include box-shadow(0 2px 12px 0 rgba(0, 0, 0, 0.15));
+  padding: 10px 10px 15px;
+  display: block;
+  height: 100%;
+  text-align: center;
+  color: map-get($global-color, b);
+  background: map-get($global-color, a);
+  transition: 0.3s;
+
+  .management-image {
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(224, 132, 36, 0.2);
+    padding: 1rem .55rem;
+    border-radius: 6px;
+    transition: 0.3s;
+    min-height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 80px;
+      height: 80px;
+      vertical-align: top;
+      transition: 0.3s;
+    }
+
+    @media screen and (max-width: 767px) {
+      margin-right: 15px;
+    }
+  }
+
+  .management-body {
+    font-weight: 700;
+    font-size: 13px;
+    color: map-get($global-color, b);
+
+    p {
+      margin: 0;
+      text-transform: capitalize;
+    }
+
+    a {
+      // color: map-get($global-color, b);
+
+      &:hover,
+      &:focus {
+        // color: map-get($global-color, active);
+      }
+    }
+
+    .btn-pill {
+      padding: .3rem 1.5rem;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    .management-body p {
+      color: map-get($global-color, active);
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    padding: 20px;
+  }
+}
+
+/*************************************
+**************************************
+Animation
+**************************************
+**************************************/
+
+/*************************************
+**************************************
+No Javascript
+**************************************
+**************************************/
+.no-js #main-visual .slick-slides {
+  visibility: visible;
+  opacity: 1;
+  max-height: 530px;
+  overflow-y: auto
+}

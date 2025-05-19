@@ -1,0 +1,58 @@
+﻿@section Headers { @(await Html.PartialAsync("_Headers")) }
+<div class="main-inner-map">
+    <div class="wrap-col-lft">
+        <div class="col-lft-navi">
+            <div class="map-front-top">
+                <div class="map-top">
+                    <!--<nav class="map-navigation">-->
+                    <nav class="map-navigations">
+                        <ul class="nav nav-tabs" id="tabs-map" role="tablist">
+                            <li class="nav-item category" role="presentation">
+                                <a href="#category-tree-container" class="nav-item-identify active show" data-toggle="tab" data-bs-target="#category-tree-container" role="tab" title="Quản lý danh mục">
+                                    <i class="icon icon-grid-6"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-tabs nav-tabs-bottom" id="tabs-navigate">
+                            @(await Html.PartialAsync("_UserNav"))
+                            <li>
+                                <a href="/system" title="Quay lại">
+                                    <i class="icon icon-undo"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/" title="Trang chủ">
+                                    <i class="icon icon-home-2"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-lft-navi-inner">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="fragment-1">
+                        <div class="tab-pane-inner-scroll" id="category-tree-container">
+                        </div>
+                    </div>
+                    <!--end accordion-sidebar-->
+                </div>
+            </div>
+            <!--end map-front-top-->
+        </div>
+    </div>
+    <div class="wrap-col-main">
+        <div class="col-main-map">
+            <div class="col-main-map-inner">
+                <div class="col-lft-navi-inner">
+                    <div class="tab-item-container" id="category-container"></div>
+                </div>
+            </div>
+            <!--end wrap-col-main-->
+        </div>
+        <!--end main-inner-map-->
+    </div>
+</div>
+
+@section styles { <%= htmlWebpackPlugin.tags.headTags %> }
+@section scripts {<%= htmlWebpackPlugin.tags.bodyTags %>}

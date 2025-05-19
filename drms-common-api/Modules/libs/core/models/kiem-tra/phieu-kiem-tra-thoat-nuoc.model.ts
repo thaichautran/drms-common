@@ -1,0 +1,43 @@
+import { OGPhieuKiemTraModel } from "./kiem-tra.model";
+
+class OGPhieuGiamSatKiemTraThoatNuocModel extends OGPhieuKiemTraModel {
+    public kiemtraapsuatnuoctrucuuhoa?: string;
+    public kiemtracaododaycongthoatnuoc?: string;
+    public kiemtracaodohodieuhoa?: string;
+    public kiemtracaodomucnuocthietkemuongsong?: string;
+    public kiemtracaodomucnuoctronglongcong?: string;
+    public kiemtrachatlieucongthoatnuoc?: string;
+    public kiemtracongnghexulyhoga?: string;
+    public kiemtracongsuatthietkehoga?: string;
+    public kiemtracongsuattiepnhanhoga?: string;
+    public kiemtracongtacthugomrac?: string;
+    public kiemtradientichngapungdiemden?: string;
+    public kiemtradocaoranhthoatnuoc?: string;
+    public kiemtradodocmepviaranhthoatnuoc?: string;
+    public kiemtradophangmuonsong?: string;
+    public kiemtradophangranhthoatnuoc?: string;
+    public kiemtradosaudiemngapung?: string;
+    public kiemtraduongonggantrucuuhoa?: string;
+    public kiemtrahethongcanhoga?: string;
+    public kiemtrahethonggscltrucuuhoa?: string;
+    public kiemtrahuongtuyenthoatnuoc?: string;
+    public kiemtrakichthuoccuaxamuongsong?: string;
+    public kiemtrakichthuochoga?: string;
+    public kiemtralichsuxulychatluongnuoc?: string;
+    public kiemtramucnuochodieuhoa?: string;
+    public kiemtramucnuocnhamayxlnt?: string;
+    public kiemtramucnuoctrucuuhoa?: string;
+    public kiemtratapketrac?: string;
+    public kiemtrathietbidomucnuochodieuhoa?: string;
+    public kiemtrathietbithiconghoga?: string;
+    public kiemtrathietbitrucuuhoa?: string;
+    public kiemtrathoidiemnaovetmuongsong?: string;
+    public kiemtrathoigiannaovethodieuhoa?: string;
+    public kiemtratietdiencongthoatnuoc?: string;
+    public kiemtratinhtranghoatdongmaybom?: string;
+    public kiemtratinhtrangmaybomnhâmyxlnt?: string;
+    public kiemtratinhtrangmaybomtrucuuhoa?: string;
+    public kiemtravatlieucuuhoa?: string;
+    public kiemtravesinh?: string;
+}
+export { OGPhieuGiamSatKiemTraThoatNuocModel };

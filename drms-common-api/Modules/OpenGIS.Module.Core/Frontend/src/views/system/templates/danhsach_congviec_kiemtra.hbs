@@ -1,0 +1,141 @@
+<html>
+
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel='stylesheet'
+          media='screen,print'>
+    <style>
+        html,
+        body {
+            font-family: Verdana, Calibri, Tahoma, Arial, 'Times New Roman';
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        table {
+            margin: 0 !important;
+        }
+
+            table tr td {
+                font-size: 11px;
+            }
+
+            table tr th {
+                font-size: 11px;
+            }
+
+            table:not(.table-min-none) tr td:not(.stt),
+            table:not(.table-min-none) tr th:not(.stt) {
+                min-width: 120px;
+            }
+
+            table tr th {
+                vertical-align: middle !important;
+                text-align: center;
+            }
+
+                table tr td.stt,
+                table tr th.stt {
+                    width: 1%;
+                    white-space: nowrap;
+                    text-align: center;
+                }
+
+            table ul {
+                padding-left: 10px;
+            }
+
+        .table-bordered {
+            border: 1px solid #000;
+        }
+
+            .table-bordered > tbody > tr > td,
+            .table-bordered > tbody > tr > th,
+            .table-bordered > tfoot > tr > td,
+            .table-bordered > tfoot > tr > th,
+            .table-bordered > thead > tr > td,
+            .table-bordered > thead > tr > th {
+                border: 1px solid #000;
+            }
+
+        tr td[rowspan] {
+            vertical-align: middle !important;
+            text-align: center !important;
+        }
+
+        .report-header {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .report-content table tr td,
+        .report-content table tr th {
+            font-size: 11px;
+        }
+
+            .report-content table tr th:first-child {
+                width: 50px;
+            }
+
+        .container-table {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-table">
+        <div class="text-center" style="height:80px;">
+            <h3 style="text-transform: uppercase;">
+                <b>DANH SÁCH CÔNG VIỆC KIỂM TRA</b>
+            </h3>
+            <p style="margin-top:5px;font-size:10px">
+                <i>(Tổng số : {{ totalCount }})</i>
+            </p>
+        </div>
+        <div style="overflow:hidden;height:100%;padding:10px;">
+            <table class="table table-bordered table-striped" border="1">
+                <thead>
+                    <tr>
+                        <th class='stt'>STT</th>
+                        <th>Mô tả</th>
+                        <th>Đơn vị quản lý</th>
+                        <th>Đơn vị thực hiện</th>
+                        <th>Loại thực hiện</th>
+                        <th>Kiểu công việc</th>
+                        <th>Hình thức kiểm tra</th>
+                        <th>Kết quả thực hiện</th>
+                        <th>Ngày bắt đầu thực hiện</th>
+                        <th>Ngày kết thúc thực hiện</th>
+                        <th>Trạng thái</th>
+                        <th>Mô tả tóm tắt công việc</th>
+                        <th>Mô tả chi tiết công việc</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#result}}
+                    <tr>
+                        <td class="stt"> {{counter}} </td>
+                        <td> {{wdesc}} </td>
+                        <td> {{org_name}} </td>
+                        <td> {{worg_name}} </td>
+                        <td> {{obj_type_name}} </td>
+                        <td> {{wtype_name}} </td>
+                        <td> {{wkind_name}} </td>
+                        <td> {{wtype_result_name}} </td>
+                        <td style="text-align: center"> {{toLocalDateString actual_start_date}} </td>
+                        <td style="text-align: center"> {{toLocalDateString actual_finish_date}} </td>
+                        <td> {{wstatus_all}} </td>
+                        <td> {{wdesc_info}} </td>
+                        <td> {{wdesc_more}} </td>
+                    </tr>
+                    {{/result}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

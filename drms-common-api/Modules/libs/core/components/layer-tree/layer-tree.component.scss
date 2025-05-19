@@ -1,0 +1,163 @@
+.layer-tree {
+    height: 100%;
+
+    .dx-treeview-search {
+        border-radius: 0;
+        border-left-width: 0;
+        border-right-width: 0;
+    }
+
+    .dx-treeview-item-with-checkbox {
+        .dx-checkbox {
+            top: 8px;
+            left: 23px;
+            height: 20px;
+            width: 20px
+        }
+
+        .dx-checkbox-icon {
+            height: 20px;
+            width: 20px
+        }
+
+        &.dx-state-selected {
+            .dx-item.dx-treeview-item {
+                .dx-item-content.dx-treeview-item-content {
+                    span.layer-item, span.table-item {
+                        font-style: italic;
+                    }
+                }
+            }
+        }
+    }
+
+    .dx-treeview-item {
+
+        // &.dx-state-hover {
+        //     background-color: transparent;
+        // }
+
+        .dx-item-content.dx-treeview-item-content {
+            display: flex;
+
+            ul.layer-tools {
+                list-style-type: none;
+                margin-left: auto;
+                padding: 0;
+
+                li {
+                    // float: left;
+                    // line-height: 18px;
+                    // height: 18px;
+                    // padding: 0 1px;
+                    margin-top: 5px;
+
+                    a {
+                        display: block;
+
+                        i {
+                            font-size: 18px;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+            }
+
+            span {
+                line-height: 24px;
+                display: inline-block;
+                font-weight: 400;
+            }
+
+            .dx-icon {
+                width: 24px;
+                height: 24px;
+                background-position: 0px 0px;
+                background-size: 24px 24px;
+                padding: 0px;
+                font-size: 18px;
+                text-align: center;
+                line-height: 24px;
+                margin-right: 10px;
+                margin-top: 5px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+
+                svg {
+                    margin: auto;
+                }
+            }
+        }
+    }
+
+    .layer-item {
+        color: #41434a !important;
+    }
+
+    .layer-group-item {
+        font-weight: 600 !important;
+        color: #000 !important;
+        font-size: 14px !important;
+    }
+
+    .layerClassifyItem {
+        color: #2c2c2c !important;
+        font-weight: 400 !important;
+    }
+
+    .titleLayer {
+        color: #2c2c2c !important;
+        font-weight: 600 !important;
+    }
+
+    .dx-menu-base .dx-menu-item .dx-menu-item-content .dx-menu-item-text {
+        font-weight: 500 !important;
+        font-size: 14px !important;
+        padding-left: 20px;
+    }
+
+    .filter-layer-search {
+        padding-top: 10px;
+
+        #input-keyword {
+            height: 40px;
+            background-color: #f1f6f7;
+            line-height: 20px;
+            color: #26272b;
+            opacity: 0.5;
+            font-size: 14px;
+            font-weight: 600;
+            border-left-width: 0;
+            border-right-width: 0;
+        }
+
+        .input-group .form-control.search-control {
+            padding-left: 36px;
+            background: #fff url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik05LjU4MTQ1IDE4LjE2MjlDNC44NTExOSAxOC4xNjI5IDEgMTQuMzExNyAxIDkuNTgxNDVDMSA0Ljg1MTE5IDQuODUxMTkgMSA5LjU4MTQ1IDFDMTQuMzExNyAxIDE4LjE2MjkgNC44NTExOSAxOC4xNjI5IDkuNTgxNDVDMTguMTYyOSAxNC4zMTE3IDE0LjMxMTcgMTguMTYyOSA5LjU4MTQ1IDE4LjE2MjlaTTkuNTgxNDUgMi4yNTU4MkM1LjUzNzcgMi4yNTU4MiAyLjI1NTgyIDUuNTQ2MDggMi4yNTU4MiA5LjU4MTQ1QzIuMjU1ODIgMTMuNjE2OCA1LjUzNzcgMTYuOTA3MSA5LjU4MTQ1IDE2LjkwNzFDMTMuNjI1MiAxNi45MDcxIDE2LjkwNzEgMTMuNjE2OCAxNi45MDcxIDkuNTgxNDVDMTYuOTA3MSA1LjU0NjA4IDEzLjYyNTIgMi4yNTU4MiA5LjU4MTQ1IDIuMjU1ODJaIiBmaWxsPSIjMjUzRTkwIi8+DQo8cGF0aCBkPSJNMTguMzcyNSAxOUMxOC4yMTM0IDE5IDE4LjA1NDQgMTguOTQxNCAxNy45Mjg4IDE4LjgxNThMMTYuMjU0NCAxNy4xNDE0QzE2LjAxMTYgMTYuODk4NiAxNi4wMTE2IDE2LjQ5NjcgMTYuMjU0NCAxNi4yNTM5QzE2LjQ5NzIgMTYuMDExMSAxNi44OTkgMTYuMDExMSAxNy4xNDE4IDE2LjI1MzlMMTguODE2MiAxNy45Mjg0QzE5LjA1OSAxOC4xNzEyIDE5LjA1OSAxOC41NzMgMTguODE2MiAxOC44MTU4QzE4LjY5MDcgMTguOTQxNCAxOC41MzE2IDE5IDE4LjM3MjUgMTlaIiBmaWxsPSIjMjUzRTkwIi8+DQo8L3N2Zz4NCg==) no-repeat 10px center scroll
+        }
+
+        .search-form span.deleteicon {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            z-index: 9999;
+
+            span {
+                position: absolute;
+                display: block;
+                top: 12px;
+                right: 8px;
+                width: 18px;
+                height: 18px;
+                border-radius: 50%;
+                color: #fff;
+                background-color: #ccc;
+                font: 16px monospace;
+                text-align: center;
+                line-height: 1em;
+                cursor: pointer;
+            }
+        }
+    }
+}

@@ -1,0 +1,69 @@
+﻿@section Headers { @(await Html.PartialAsync("_Headers")) }
+<div class="main-inner-map">
+    <div class="wrap-col-lft">
+        <div class="col-lft-navi">
+            <div class="map-front-top">
+                <div class="map-top">
+                    <!--<nav class="map-navigation">-->
+                    <nav class="map-navigations">
+                        <ul class="nav nav-tabs" id="tabs-sidebar" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a href="#user-district-content" class="active show" data-toggle="tab" data-bs-target="#user-district-content" role="tab" title="Thống kê người dùng theo đơn vị hành chính">
+                                    <i class="icon icon-grid-2"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#user-group-content" data-toggle="tab" data-bs-target="#user-group-content" role="tab" title="Thống kê người dùng theo nhóm">
+                                    <i class="icon icon-grid-3"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#user-access-content" data-toggle="tab" data-bs-target="#user-access-content" role="tab" title="Thống kê lượt truy cập của người dùng">
+                                    <i class="icon icon-grid-4"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-tabs nav-tabs-bottom" id="tabs-navigate">
+                            @(await Html.PartialAsync("_UserNav"))
+                            <li>
+                                <a href="/system" title="Quay lại">
+                                    <i class="icon icon-undo"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/" title="Trang chủ">
+                                    <i class="icon icon-home-2"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!--end map-front-top-->
+        </div>
+    </div>
+    <div class="wrap-col-main">
+        <div class="col-main-map">
+            <div class="col-main-map-inner">
+                <div class="col-lft-navi-inner h-100">
+                    <div class="tab-content h-100">
+                        <div class="h-100 tab-pane fade show active" id="user-district-content" role="tabpanel">
+                            <div class="tab-item-container" id="user-district-container"></div>
+                        </div>
+                        <div class="h-100 tab-pane fade" id="user-group-content" role="tabpanel">
+                            <div class="tab-item-container" id="user-group-container"></div>
+                        </div>
+                        <div class="tab-pane fade" id="user-access-content" role="tabpanel">
+                            <div class="tab-item-container" id="user-access-container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end wrap-col-main-->
+        </div>
+        <!--end main-inner-map-->
+    </div>
+</div>
+
+@section styles { <%= htmlWebpackPlugin.tags.headTags %> }
+@section scripts {<%= htmlWebpackPlugin.tags.bodyTags %>}

@@ -1,0 +1,33 @@
+.dx-tabpanel>.dx-tabpanel-tabs .dx-tabs {
+    display: inline-table !important;
+}
+
+.dxc-tooltip {
+    z-index: 2000;
+}
+
+.dx-datagrid-pager {
+    border: unset;
+}
+
+.chart-body {
+    overflow: auto;
+}
+
+.dx-item.dx-tab {
+    white-space: normal;
+}
+
+.border-top-1 {
+    border-top: solid black 1px;
+}
+
+.currently-active-item {
+    font-weight: bold;
+    color: white;
+    background-color: #337ab7;
+}
+
+.dx-item-content>span {
+    font-weight: bolder;
+}

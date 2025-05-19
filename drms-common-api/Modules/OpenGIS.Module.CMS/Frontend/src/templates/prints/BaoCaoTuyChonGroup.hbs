@@ -1,0 +1,150 @@
+<html>
+
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel='stylesheet'
+          media='screen,print'>
+    <style>
+        html,
+        body {
+            font-family: Verdana, Calibri, Tahoma, Arial, 'Times New Roman';
+        }
+
+        table {
+            margin: 0 !important;
+        }
+
+            table tr td {
+                font-size: 11px;
+            }
+
+            table tr th {
+                font-size: 11px;
+            }
+
+            table:not(.table-min-none) tr td:not(.stt),
+            table:not(.table-min-none) tr th:not(.stt) {
+                min-width: 120px;
+            }
+
+            table tr th {
+                vertical-align: middle !important;
+                text-align: center;
+            }
+
+                table tr td.stt,
+                table tr th.stt {
+                    width: 1%;
+                    white-space: nowrap;
+                    text-align: center;
+                }
+
+            table ul {
+                padding-left: 10px;
+            }
+
+        .table-bordered {
+            border: 1px solid #000;
+        }
+
+            .table-bordered > tbody > tr > td,
+            .table-bordered > tbody > tr > th,
+            .table-bordered > tfoot > tr > td,
+            .table-bordered > tfoot > tr > th,
+            .table-bordered > thead > tr > td,
+            .table-bordered > thead > tr > th {
+                border: 1px solid #000;
+            }
+
+        tr td[rowspan] {
+            vertical-align: middle !important;
+            text-align: center !important;
+        }
+
+        .report-header {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .report-content table tr td,
+        .report-content table tr th {
+            font-size: 11px;
+        }
+
+            .report-content table tr th:first-child {
+                width: 50px;
+            }
+
+        .container-table {
+            width: 100%;
+            /*height: 89%;
+            overflow: auto;*/
+        }
+    </style>
+</head>
+
+<body>
+    <div class="text-center">
+        {{#if (isdefined layer)}}
+        {{#if (isdefined groupName)}}
+        <h3 style="text-transform: uppercase;">
+            <b> BÁO CÁO {{ layer.name_vn }} THEO {{groupName}}</b>
+        </h3>
+        {{else}}
+        <h3 style="text-transform: uppercase;">
+            <b> BÁO CÁO {{ layer.name_vn }}</b>
+        </h3>
+        {{/if}}
+        <p style="margin-top:5px;font-size:10px">
+            <i>(Tổng số {{ layer.name_vn }}: {{ totalCount }})</i>
+        </p>
+        {{else}}
+        <h3 style="text-transform: uppercase;">
+            <b>BÁO CÁO {{ title }}</b>
+        </h3>
+        {{#if (isdefined totalCount)}}
+        <p style="margin-top:5px;font-size:10px">
+            <i>(Tổng số: {{ totalCount }})</i>
+        </p>
+        {{/if}}
+        {{/if}}
+    </div>
+    <div class="container-table">
+        <table class="table table-bordered" border="1">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    {{#selectedColumns}}
+                    <th>{{ name }}</th>
+                    {{/selectedColumns}}
+                    {{#if (isdefined addedColumns)}}
+                    {{#addedColumns}}
+                    <th>{{ name }}</th>
+                    {{/addedColumns}}
+                    {{/if}}
+                </tr>
+            </thead>
+            <tbody>
+                {{#each resultGroupBy}}
+                <tr>
+                    <td style="background-color: lightgrey" colspan="{{{numberOfColspan}}}">
+                        {{@key}}
+                    </td>
+                </tr>
+                {{#each this}}
+                <tr>
+                    <td>{{counter}}</td>
+                    {{#each this}}
+                    <td>
+                        {{this}}
+                    </td>
+                    {{/each}}
+                    {{{addCells}}}
+                </tr>
+                {{/each}}
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

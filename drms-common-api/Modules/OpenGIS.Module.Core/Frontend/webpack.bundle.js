@@ -1,0 +1,80 @@
+module.exports = [{
+    chunk: "system.map-config",
+    chunkPath: "./src/views/system/map-config/map-config.view.ts",
+    filename: "../Backend/Areas/Core/Views/System/MapConfig.cshtml",
+    template: "./src/views/system/map-config/map-config.view.html",
+    title: "Map"
+}, {
+    chunk: "system.index",
+    chunkPath: "./src/views/system/index.view.ts",
+    filename: "../Backend/Areas/Core/Views/System/Index.cshtml",
+
+    template: "./src/views/system/index.view.html",
+    title: "System"
+}, {
+    chunk: "layers",
+    chunkPath: "./src/views/system/layers/layers.view.ts",
+    filename: "../Backend/Areas/Core/Views/System/Layers.cshtml",
+    template: "./src/views/system/layers/layers.view.html",
+    title: "Layers"
+}, {
+    chunk: "tables",
+    chunkPath: "./src/views/system/tables/tables.view.ts",
+    filename: "../Backend/Areas/Core/Views/System/Tables.cshtml",
+    template: "./src/views/system/tables/tables.view.html",
+    title: "Tables"
+}, {
+    chunk: "users",
+    chunkPath: "./src/views/system/users/users.view.ts",
+    filename: "../Backend/Areas/Core/Views/System/Users.cshtml",
+    template: "./src/views/system/users/users.view.html",
+    title: "Users"
+}, {
+    chunk: "maintenance",
+    chunkPath: "./src/views/system/maintenance/maintenance.view.ts",
+    filename: "../Backend/Areas/Core/Views/System/Maintenance.cshtml",
+    template: "./src/views/system/maintenance/maintenance.view.html",
+    title: "Maintenance"
+}, {
+    chunk: "category",
+    chunkPath: "./src/views/system/category/category.view.ts",
+    filename: "../Backend/Areas/Core/Views/System/Category.cshtml",
+    template: "./src/views/system/category/category.view.html",
+    title: "Category"
+}, {
+    chunk: "params",
+    chunkPath: "./src/views/system/params/params.view.ts",
+    filename: "../Backend/Areas/Core/Views/System/Params.cshtml",
+    template: "./src/views/system/params/params.view.html",
+    title: "Params"
+}, {
+    chunk: "login",
+    chunkPath: "./src/views/account/login/login.view.ts",
+    filename: "../Backend/Areas/Core/Views/Account/Login.cshtml",
+    template: "./src/views/account/login/login.view.html",
+    title: "Login"
+}, {
+    chunk: "home",
+    chunkPath: "./src/views/system/home/home.view.ts",
+    filename: "../Backend/Areas/Core/Views/System/Home.cshtml",
+    template: "./src/views/system/home/home.view.html",
+    title: "Home"
+}, {
+    chunk: "home-items",
+    chunkPath: "./src/views/system/home-items/home-items.view.ts",
+    filename: "../Backend/Areas/Core/Views/System/HomeItems.cshtml",
+    template: "./src/views/system/home-items/home-items.view.html",
+    title: "Home"
+}, {
+    chunk: "form",
+    chunkPath: "./src/views/form/form.view.ts",
+    filename: "../Backend/Areas/Core/Views/Form/Index.cshtml",
+    template: "./src/views/form/form.view.html",
+    title: "Form"
+}, {
+    chunk: "hdsd",
+    chunkPath: "./src/views/system/hdsd/hdsd.view.ts",
+    filename: "../Backend/Areas/Core/Views/System/HDSD.cshtml",
+    template: "./src/views/system/hdsd/hdsd.view.html",
+    title: "HDSD"
+},];

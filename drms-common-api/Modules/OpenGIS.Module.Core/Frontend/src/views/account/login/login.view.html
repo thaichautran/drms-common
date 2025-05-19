@@ -1,0 +1,15 @@
+@model VietGIS.Infrastructure.Identity.ViewModels.LoginInputModel;
+@using VietGIS.Infrastructure;
+
+<div id="form-login" class="popup-login p-3">
+    <img class="popup-login-logo" src="@VietGIS.Infrastructure.GlobalConfiguration.ApplicationLogo">
+    <div class="popup-login-logo-text">
+        <p class="popup-login-site-name">@VietGIS.Infrastructure.GlobalConfiguration.ApplicationName</p>
+        <p class="popup-login-site-subtitle">@VietGIS.Infrastructure.GlobalConfiguration.ApplicationDescription</p>
+    </div>
+    <form method="POST" action="/account/login" class="popup-login-content"></form>
+    <form method="POST" action="/account/forgotpassword" class="popup-forgot-password-content" hidden></form>
+</div>
+
+@section styles {<%= htmlWebpackPlugin.tags.headTags %>}
+@section scripts{<%= htmlWebpackPlugin.tags.bodyTags %>}

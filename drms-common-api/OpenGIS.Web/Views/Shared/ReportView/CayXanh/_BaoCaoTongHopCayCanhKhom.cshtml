@@ -1,0 +1,188 @@
+@{
+    Layout = null;
+}
+@using System.Data;
+@using System.Linq;
+@using Dapper;
+@using System.Globalization;
+@using OpenGIS.Module.Core.ViewModels;
+@model IEnumerable<OpenGIS.Module.Core.ViewModels.BaoCaoTongHopCayCanhKhomViewModel>;
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel='stylesheet' media='screen,print'>
+    <style>
+        html,
+        body {
+            font-family: "Reddit Sans", "Helvetica Neue", "Segoe UI", "helvetica", "verdana", "sans-serif";
+        }
+
+        table {
+            margin: 0 !important;
+        }
+
+        table tr td {
+            font-size: 11px;
+        }
+
+        table tr th {
+            font-size: 11px;
+        }
+
+        table:not(.table-min-none) tr td:not(.stt),
+        table:not(.table-min-none) tr th:not(.stt) {
+            min-width: 120px;
+        }
+
+        table tr th {
+            vertical-align: middle !important;
+            text-align: center;
+            font-weight: bolder;
+        }
+
+        table tr td.stt,
+        table tr th.stt {
+            width: 20px;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        table ul {
+            padding-left: 10px;
+        }
+
+        .table-bordered {
+            border: 1px solid #000;
+        }
+
+        .table-bordered>tbody>tr>td,
+        .table-bordered>tbody>tr>th,
+        .table-bordered>tfoot>tr>td,
+        .table-bordered>tfoot>tr>th,
+        .table-bordered>thead>tr>td,
+        .table-bordered>thead>tr>th {
+            border: 1px solid #000;
+        }
+
+        tr td[rowspan] {
+            vertical-align: middle !important;
+            text-align: center !important;
+        }
+
+        .report-header {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .report-content table tr td,
+        .report-content table tr th {
+            font-size: 11px;
+        }
+
+        .report-content table tr th:first-child {
+            width: 50px;
+        }
+
+        .container-table {
+            width: 100%;
+            /*height: 89%;
+            overflow: auto;*/
+        }
+
+        p {
+            margin: unset;
+            text-align: right !important;
+        }
+
+        p.sum {
+            font-weight: bold;
+        }
+
+        p.sum-child {
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .font-weight-bolder {
+            font-weight: bolder;
+        }
+
+        .group-td {
+            background-color: #007bff;
+            color: #ffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="text-center">
+        <h3 style="text-transform: uppercase;">
+            <b> BÁO CÁO TỔNG HỢP CƠ SỞ DỮ LIỆU CÂY TRỒNG ĐƠN LẺ, CẢNH KHÓM</b>
+            <br>
+            <b> THÀNH PHỐ HÀ NỘI</b>
+        </h3>
+        <span style="font-style: italic;"> Ngày @DateTime.Now.ToString("dd/MM/yyyy")</span>
+    </div>
+    <div class="container-table" style="margin-top: 10px;">
+        <table class="table table-bordered" border="1">
+            <thead>
+                <tr>
+                    <th class="stt">STT</th>
+                    <th>Tên tuyến</th>
+                    <th>Loại cây</th>
+                    <th>Đơn vị</th>
+                    <th>Số lượng</th>
+                    <th>Đơn vị quản lý</th>
+                    <th>Nhà thầu</th>
+                    <th>Hợp đồng</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    <tr>
+                        <td colspan="2" class="text-center font-weight-bolder">TỔNG</td>
+                        <td class="text-center font-weight-bolder"></td>
+                        <td class="text-center font-weight-bolder"></td>
+                        <td class="text-right font-weight-bolder">@Model.Sum(x => x.total)?.ToString("#,###.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                        <td class="text-center font-weight-bolder"></td>
+                        <td class="text-center font-weight-bolder"></td>
+                        <td class="text-center font-weight-bolder"></td>
+                    </tr>
+                    var index = 0;
+                    var group = @Model.GroupBy(x => x.district);
+                    foreach (var data in group)
+                    {
+                        <tr>
+                            <td class="font-weight-bolder" colspan="2">@data.Key</td>
+                            <td class="text-center font-weight-bolder"></td>
+                            <td class="text-center font-weight-bolder"></td>
+                            <td class="text-right font-weight-bolder">@data.Sum(x => x.total)?.ToString("#,###.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                            <td class="text-center font-weight-bolder"></td>
+                            <td class="text-center font-weight-bolder"></td>
+                            <td class="text-center font-weight-bolder"></td>
+                        </tr>
+                        @foreach (var item in data)
+                        {
+                            <tr>
+                                <td class="text-center stt">@(++index)</td>
+                                <td class="text-left">@(item.tentuyen ?? "Không xác định")</td>
+                                <td class="text-left">@(item.loaicay)</td>
+                                <td class="text-left">Cây (khóm)</td>
+                                <td class="text-right">@item.total?.ToString("#,###.##", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)</td>
+                                <td class="text-center">@item.donviquanly</td>
+                                <td class="text-center">@item.nhathau</td>
+                                <td class="text-center">@item.mahopdongquanly</td>
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+
+
+</html>

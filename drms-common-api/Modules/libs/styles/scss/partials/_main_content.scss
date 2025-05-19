@@ -1,0 +1,155 @@
+/*************************************
+**************************************
+These are the styles for
+the main content section
+**************************************
+**************************************/
+
+.container {
+  @media screen and (min-width: 1200px) {
+    max-width: 1160px;
+  }
+
+  @media screen and (max-width: 1170px) {
+    max-width: 100%;
+  }
+
+  @include media-breakpoint-down(md) {
+    max-width: 100%;
+  }
+}
+
+#wrapper {
+  height: auto;
+  margin: 0 auto;
+  min-height: 100%;
+  padding: 0;
+}
+.define-map,
+.define-normal,
+.define-customer{
+  #wrapper {
+    padding: 0;
+    margin: 0 auto;
+  }
+}
+
+/*----- Content -----*/
+
+#page-content {
+  @include clearfix();
+}
+
+.main-content {
+  @include word-wrap();
+}
+
+.right-content {
+  @media screen and (max-width: 767px) {
+    margin-top: 2rem;
+  }
+}
+
+#page-content:before,
+#page-content:after {
+  content: "";
+  display: table;
+}
+
+#page-content:after {
+  clear: both;
+}
+
+
+/*equal-height*/
+
+.equal-height-item {
+  @include equal_height();
+
+  .catagory-item {
+    @include flexbox();
+  }
+}
+
+.page-title {
+  margin-bottom: 10px;
+}
+
+.effect-image {
+  overflow: hidden;
+  position: relative;
+}
+
+.effect-image img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  -webkit-transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+  -moz-transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.effect-image:hover img,
+.effect-image:focus img {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-transition: all 1.3s cubic-bezier(0.23, 1, 0.32, 1);
+  -moz-transition: all 1.3s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all 1.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ==================================================
+skip
+================================================== */
+
+.paragraph-skip {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.skip {
+  width: 1px;
+  color: #000000;
+  font-size: 0.1%;
+  line-height: 0.1;
+  background-color: #FFFFFF;
+  position: absolute;
+  left: -3000px;
+  z-index: 9999;
+}
+
+a.skip {
+  color: #003377;
+  background-color: #FFFFFF;
+  text-align: center;
+  padding: 5px 0 7px;
+  top: auto;
+}
+
+a.skip:active {
+  display: block;
+  width: 99.99%;
+  font-size: 100%;
+  line-height: 1.6;
+  top: 0;
+  left: 0;
+}
+
+a.skip:focus {
+  display: block;
+  width: 99.99%;
+  font-size: 100%;
+  line-height: 1.6;
+  top: 0;
+  left: 0;
+}
+
+/* ==================================================
+No Javascript
+================================================== */
+
+.no-js .mean-aside {
+  display: none;
+}

@@ -1,0 +1,279 @@
+<html>
+
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel='stylesheet'
+          media='screen,print'>
+    <style>
+        html,
+        body {
+            font-family: Verdana, Calibri, Tahoma, Arial, 'Times New Roman';
+            height: 100%;
+            width: 100%;
+        }
+
+        table {
+            margin: 0 !important;
+            border-collapse: collapse;
+        }
+
+            table tr td {
+                font-size: 11px;
+                height: 30px;
+                padding-left: 5px;
+            }
+
+            table tr th {
+                font-size: 12px;
+                height: 30px;
+            }
+
+            table:not(.table-min-none) tr td:not(.stt),
+            table:not(.table-min-none) tr th:not(.stt) {
+                min-width: 120px;
+            }
+
+            table tr th {
+                vertical-align: middle !important;
+                text-align: center;
+            }
+
+                table tr td.stt,
+                table tr th.stt {
+                    width: 50px;
+                    white-space: nowrap;
+                    text-align: center;
+                }
+
+            table ul {
+                padding-left: 10px;
+            }
+
+        .table-bordered {
+            border: 1px solid #000;
+        }
+            
+            .table-bordered > tbody > tr > td,
+            .table-bordered > tbody > tr > th,
+            .table-bordered > tfoot > tr > td,
+            .table-bordered > tfoot > tr > th,
+            .table-bordered > thead > tr > td,
+            .table-bordered > thead > tr > th {
+                border: 1px solid #000;
+            }
+
+        tr td[rowspan] {
+            vertical-align: middle !important;
+            text-align: center !important;
+        }
+
+        .report-header {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .report-content table tr td,
+        .report-content table tr th {
+            font-size: 12px;
+        }
+
+            .report-content table tr th:first-child {
+                width: 50px;
+            }
+
+        .container-table {
+            width: 100%;
+            height: 100%;
+        }
+
+        .label-form {
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .label-form span{
+            font-weight: 500!important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-table">
+        <div class="text-center" style="height:80px; text-align: center">
+            <h3 style="text-transform: uppercase;">
+                <b>PHIẾU KIỂM TRA, GIÁM SÁT CHIẾU SÁNG</b>
+                <p style="font-size: 10px; text-transform: none">Phương thức kiểm tra: {{phuongThucKiemTra.mo_ta}}</p>
+                <p style="font-size: 10px; text-transform: none">Công cụ kiểm tra: {{congCuKiemTra.mo_ta}}</p>
+            </h3>
+        </div>
+        <div style="height:100%;padding:10px;">
+            <h4>Thông tin chung</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form" width="50%">Thời tiết: <span>{{thietbi}}</span></td>
+                        <td class="label-form">Thiết bị: <span>{{thietbi}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form" width="50%">Số nhân công: <span>{{sonhancong}}</span></td>
+                        <td class="label-form">Vị trí: <span>{{vitri}}</span></td>
+                    </tr>
+                   
+                    <tr>
+                        <td class="label-form" width="50%">Tên công trình: <span>{{tencongtrinh}}</span></td>
+                        <td class="label-form">Gói thầu số: <span>{{goithauso}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form" width="50%">Nhà thầu: <span>{{nhathau}}</span></td>
+                        <td class="label-form">Đơn vị thi công: <span>{{donvithicong}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form" width="50%" style="padding-right: 30px">Ngày thực hiện: <span>{{toLocalDateString ngaythuchien}} </span></td>
+                        <td class="label-form">Ngày kết thúc: <span>{{toLocalDateString ngayketthuc}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form" width="50%">Địa điểm: <span>{{diadiem}}</span></td>
+                        <td class="label-form">Ghi chú: <span>{{ghichu}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra công tác an toàn</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra công tác an toàn lao động:<span>{{kiemtracongtacatld}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra công tác an toàn giao thông:<span>{{kiemtracongtacatgt}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra công tác vệ sinh môi trường khu vực thi công:<span>{{kiemtractvsmtkhuvuctc}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra duy trì trạm đèn</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra chất liệu:<span>{{kiemtrachatlieutramden}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra công suất theo trạm:<span>{{kiemtracongsuattheotram}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra công suất theo tuyến:<span>{{kiemtracongsuattheotuyen}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra công suất theo tuyến quản lý:<span>{{kiemtracongsuattheotuyenquanly}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra duy trì tủ điện</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra khởi động từ:<span>{{kiemtrakhoidongtu}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra Aptomat:<span>{{kiemtraaptomat}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra bộ chuyển mạch:<span>{{kiemtrabochuyenmach}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra thiết bị điều khiển trung tâm:<span>{{kiemtrathietbidieukhientrungtam}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra đồng hồ hẹn giờ:<span>{{kiemtradonghohengio}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra duy trì cột đèn</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra loại cột:<span>{{kiemtraloaicot}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra dây dẫn:<span>{{kiemtradaydan}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra bảng điện cửa cột:<span>{{kiemtrabangdiencuacot}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra chủng loại vỏ đèn:<span>{{kiemtrachungloaivoden}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra chiều cao cột:<span>{{kiemtrachieucaocot}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra số lượng bầu đèn trên cột:<span>{{kiemtrasoluongbaudentrencot}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra tuyến cáp</h5>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra tiết diện tuyến cáp:<span>{{kiemtratietdientuyencap}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra chiều dài tuyến cáp:<span>{{kiemtrachieudaituyencap}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra chất liệu tuyến cáp:<span>{{kiemtrachatlieutuyencap}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra hệ thống trang trí</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra bộ điều khiển:<span>{{kiemtrabodieukhientrangtri}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra tủ điều khiển:<span>{{kiemtratudieukhientrangtri}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Kiểm tra duy trì bầu đèn</h4>
+            <table class="table maintenance-info" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class="label-form">Kiểm tra loại dây lên đèn:<span>{{kiemtraloaidaylenden}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra chiều dài dây lên đèn:<span>{{kiemtrachieudaidaylenden}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra kích thước dây lên đèn:<span>{{kiemtrakichthuocdaylenden}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra loại bóng:<span>{{kiemtraloaibong}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label-form">Kiểm tra công suất bóng:<span>{{kiemtracongsuatbong}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Danh sách nhân viên thực hiện</h4>
+            <table class="table table-bordered" style="width: 100%">
+                <thead>
+                    <tr>
+                        <th class='stt'>STT</th>
+                        <th>Tên nhân viên</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each giaoViecNhanViens}}
+                    <tr>
+                        <td class="stt"> {{counter}} </td>
+                        <td> {{nhanVien.tennhanvien}} </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

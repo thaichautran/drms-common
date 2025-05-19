@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+  <PropertyGroup>
+    <!-- Explicitly generate Assembly Info -->
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Aspose.Cells" Version="23.12.0" />
+    <PackageReference Include="Aspose.Zip" Version="23.10.0" />
+    <PackageReference Include="CsvHelper" Version="12.1.2" />
+    <PackageReference Include="IronXL.Excel" Version="2023.6.4" />
+    <PackageReference Include="MaxRev.Gdal.Core" Version="3.10.1.319" />
+    <PackageReference Include="MaxRev.Gdal.WindowsRuntime.Minimal" Version="3.10.1.319" />
+    <PackageReference Include="MaxRev.Gdal.LinuxRunTime.Minimal" Version="3.10.1.319" />
+    <PackageReference Include="MaxRev.Gdal.MacosRuntime.Minimal" Version="3.10.1.319" />
+    <PackageReference Include="MetadataExtractor" Version="2.2.0" />
+    <PackageReference Include="Mime" Version="3.0.2" />
+    <PackageReference Include="SharpKml.Core" Version="6.0.0" />
+    <PackageReference Include="SharpZipLib" Version="1.4.2" />
+    <PackageReference Include="EasyCaching.InMemory" Version="1.9.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenGIS.Module.Core\Backend\OpenGIS.Module.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>OpenGIS.Module.API.Tests</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+</Project>
