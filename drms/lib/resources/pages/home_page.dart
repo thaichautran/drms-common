@@ -40,7 +40,7 @@ class _HomePageState extends NyPage<HomePage> {
       appBar: AppBar(
         elevation: 0,
         title: const Text(
-          'Kịch bản ứng phó thiên tai',
+          'Kịch bản thiên tai',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,

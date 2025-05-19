@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:checkable_treeview/checkable_treeview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:flutter_map_marker_popup/flutter_map_marker_popup.dart';
 import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:nylo_framework/nylo_framework.dart';
@@ -43,13 +44,13 @@ class _DirectionPageState extends NyState<DirectionPage> {
   List<Polygon> _listPolygon = [];
   List<dynamic> _allLayers = [];
   final Map<int, ParsedLayerStyle> _styleCache = {};
+  final LayerHitNotifier hitNotifier = ValueNotifier(null);
 
-  // ----------- Các biến cho tính năng tìm đường -----------
-  LatLng? _routeStart; // Điểm xuất phát
-  LatLng? _routeEnd; // Điểm đích
+  LatLng? _routeStart;
+  LatLng? _routeEnd;
   List<RouteSegment> _routeSegments = [];
   Polyline? _routePolyline;
-  bool _isChoosingStart = false; // Đang chọn điểm xuất phát hay điểm đích
+  bool _isChoosingStart = false;
 
   @override
   get init => () async {
@@ -147,7 +148,6 @@ class _DirectionPageState extends NyState<DirectionPage> {
         Polygon(
           points: polygon[0], // ring ngoài
           holePointsList: polygon.length > 1 ? polygon.sublist(1) : [],
-
           borderStrokeWidth: 2,
           borderColor: Colors.red,
         ),
@@ -574,20 +574,104 @@ class _DirectionPageState extends NyState<DirectionPage> {
             PolygonLayer(
               polygons: getPolygonsFromMultiPolygon(boundary),
             ),
-            PolygonLayer(
-              polygons: _listPolygon,
+            MouseRegion(
+              hitTestBehavior: HitTestBehavior.deferToChild,
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                onTap: () {
+                  final LayerHitResult? hitResult = hitNotifier.value;
+                  if (hitResult == null) return;
+                },
+                child: PolygonLayer(
+                  hitNotifier: hitNotifier,
+                  polygons: _listPolygon,
+                ),
+              ),
             ),
-            PolylineLayer(
-              polylines: _listLine,
+            MouseRegion(
+              hitTestBehavior: HitTestBehavior.deferToChild,
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                onTap: () {
+                  final LayerHitResult? hitResult = hitNotifier.value;
+                  if (hitResult == null) return;
+                },
+                child: PolylineLayer(
+                  hitNotifier: hitNotifier,
+                  polylines: _listLine,
+                ),
+              ),
             ),
-            MarkerLayer(
-              markers: _markers,
-            ),
+            PopupMarkerLayer(
+              options: PopupMarkerLayerOptions(
+                markers: _markers,
+                popupDisplayOptions: PopupDisplayOptions(
+                  builder: (BuildContext context, Marker marker) => Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 4,
+                          offset: Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        buildInfoRow('Tên cơ sở', 'Trạm y tế xã Hiệp Thành'),
+                        buildInfoRow('Số phòng bệnh', '12'),
+                        buildInfoRow('Số y bác sĩ', '20'),
+                        buildInfoRow('Số người sơ tán', '80'),
+                        buildInfoRow('Có hỗ trợ chống thiên tai?', 'Có'),
+                        buildInfoRow('Có nhà vệ sinh?', 'Có'),
+                        buildInfoRow('Có nước sạch?', 'Có'),
+                        buildInfoRow('Tỉnh/TP', 'Tỉnh Bạc Liêu'),
+                        buildInfoRow('Quận/Huyện', 'Thành phố Bạc Liêu'),
+                        buildInfoRow('Xã/Phường', 'Xã Hiệp Thành'),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
     );
   }
+}
+
+Widget buildInfoRow(String title, String content) {
+  return Container(
+    padding: const EdgeInsets.symmetric(vertical: 4),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          flex: 3,
+          child: Text(
+            title,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.grey[800],
+            ),
+          ),
+        ),
+        Expanded(
+          flex: 5,
+          child: Text(
+            content,
+            style: TextStyle(color: Colors.black87),
+          ),
+        ),
+      ],
+    ),
+  );
 }
 
 class ParsedLayerStyle {
