@@ -63,7 +63,8 @@ DBeaver cung cấp giao diện trực quan để quản lý cơ sở dữ liệu
 
 ### 🔹 Bước 6: Import dữ liệu từ tệp backup
 
-- Chọn file backup `dump-KLTN-202505200459.sql`
+- Chọn file backup `dump-KLTN-202505200459.sql` từ đường dẫn sau
+  👉 Tải tại: https://drive.google.com/file/d/1hCIEXH3BDCJXPQ4a3dIFZ583g8dLCQEs/view?usp=sharing
 - Nhấn `Start` để bắt đầu import dữ liệu
 
 ![Import dữ liệu](https://github.com/user-attachments/assets/1d376f54-9dc7-4928-9883-642ab30d0eb8)
