@@ -89,6 +89,7 @@ SELECT * FROM wrk_fromatob_safe(
     false
 );
 ```
+![image](https://github.com/user-attachments/assets/ec9b8b1b-358c-4294-a47e-ca928d7002a6)
 
 ## 🚀 Video demo trực quan hóa trên thiết bị di động
 
