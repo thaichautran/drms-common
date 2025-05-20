@@ -89,7 +89,8 @@ SELECT * FROM wrk_fromatob_safe(
     false
 );
 
+
 ## 🚀 Video demo trực quan hóa trên thiết bị di động
 
-https://github.com/user-attachments/assets/a9bece80-496b-4825-a2be-9a1895fb506c
+https://youtube.com/shorts/8OUUbp7DVdA?feature=share
 
