@@ -1,28 +1,95 @@
-![image](https://github.com/user-attachments/assets/0865b950-84f4-4a14-beea-0058c6ea62a1)![image](https://github.com/user-attachments/assets/d64acfc0-1569-43c4-825e-7ac0f4943769)Ứng dụng cơ sở dữ liệu và hệ thống thông tin địa lý để xây dựng kịch bản phòng chống thiên tai (DRMS - Disaster Response Management System)
-Hướng dẫn cài đặt
-Công nghệ sử dụng:
-- Hệ quản trị cơ sở dữ liệu PostgresSQL
-- Framework ASP.NET hỗ trợ viết API
-- Framework Flutter hỗ trợ xây dựng ứng dụng di dộng
-- Thư viện cơ sở hạ tầng dựa trên ASP.NET nội bộ cho các hệ thống GIS - VietGIS.Infrastructure của công ty TNHH VietGIS (https://vietgis.com.vn/)
+# 🌐 Ứng dụng DRMS - Disaster Response Management System
 
-Trong đó, ASP.NET và Flutter chỉ dùng để trực quan hóa dữ liệu lên bản đồ số trên thiết bị di động còn toàn bộ thao tác dành cho bài toán được nêu trong khóa luận đều được thực hiện trên hệ quản trị cơ sở dữ liệu PostgreSQL nên phần này sẽ tập trung vào hướng dẫn cài đặt và thao tác trên PostgreSQL
-Các bước:
-Bước 1: Tải và cài đặt PostgreSQL: https://www.postgresql.org/download/
-Bước 2: Tải và cài đặt phần mềm hỗ trợ quản trị cơ sở dữ liệu DBeaver để dễ tương tác nhờ có giao diện trực quan: https://dbeaver.io/download/
-Bước 3: Sau khi cài đặt xong DBeaver, mở ứng dụng và chuột phải ở thanh sidebar phía bên trái màn hình rồi chọn create -> connection -> chọn postgreSQL
-![image](https://github.com/user-attachments/assets/151dea1b-07bd-4f62-ba1c-606c828db8ba)
-Bước 4: Nhập thông tin kết nối bằng username và password được tạo khi cài đặt postgreSQL, tên database là postgres rồi nhấn Finish
-![image](https://github.com/user-attachments/assets/aec0f53e-7f86-4b9a-8d1a-bde37219955e)
-Bước 5: Chuột phải vào connetion và tạo một database mới -> chọn Tools -> Chọn Excute Script
-![image](https://github.com/user-attachments/assets/f48121ef-ed44-4027-a1f2-32b31c9edbdb)
-Bước 6: Chọn tệp backup [Uploading dump-KLTN-202505200459.sql…]() và bấm Start rồi đợi cho dữ liệu được import toàn bộ
- ![image](https://github.com/user-attachments/assets/1d376f54-9dc7-4928-9883-642ab30d0eb8)
-Bước 7: Chuột phải vào database vừa được import dữ liệu -> chọn SQL Editor -> chọn Open SQL Script
-![image](https://github.com/user-attachments/assets/d7a9654a-66de-45b2-9bbe-3be53182ccab)
-Bước 8: Chạy thử truy vấn để tìm đường đi giữa hai điểm như sau để xem kết quả
+**Ứng dụng cơ sở dữ liệu và hệ thống thông tin địa lý để xây dựng kịch bản phòng chống thiên tai.**
 
+---
+
+## 🚀 Hướng dẫn cài đặt
+
+### 🛠️ Công nghệ sử dụng
+
+- **PostgreSQL** – Hệ quản trị cơ sở dữ liệu
+- **ASP.NET** – Framework hỗ trợ xây dựng API
+- **Flutter** – Framework xây dựng ứng dụng di động
+- **VietGIS.Infrastructure** – Thư viện hệ thống GIS nội bộ dựa trên ASP.NET của [Công ty TNHH VietGIS](https://vietgis.com.vn/)
+
+> ⚠️ **Lưu ý:** ASP.NET và Flutter chỉ dùng để trực quan hóa dữ liệu trên bản đồ số. **Toàn bộ thao tác chính của hệ thống được thực hiện trong PostgreSQL.** Vì vậy phần hướng dẫn bên dưới sẽ tập trung vào cài đặt và thao tác với PostgreSQL.
+
+---
+
+## 📋 Các bước cài đặt
+
+### 🔹 Bước 1: Cài đặt PostgreSQL
+
+Tải về từ trang chính thức:  
+👉 https://www.postgresql.org/download/
+
+---
+
+### 🔹 Bước 2: Cài đặt phần mềm hỗ trợ DBeaver
+
+DBeaver cung cấp giao diện trực quan để quản lý cơ sở dữ liệu.  
+👉 Tải tại: https://dbeaver.io/download/
+
+---
+
+### 🔹 Bước 3: Kết nối với PostgreSQL
+
+- Mở DBeaver
+- Chuột phải vào **sidebar bên trái** → `Create` → `Connection` → chọn **PostgreSQL**
+
+![Kết nối PostgreSQL](https://github.com/user-attachments/assets/151dea1b-07bd-4f62-ba1c-606c828db8ba)
+
+---
+
+### 🔹 Bước 4: Nhập thông tin kết nối
+
+- **Username** & **Password**: Nhập thông tin đã tạo khi cài PostgreSQL  
+- **Database**: postgres  
+- Nhấn `Finish`
+
+![Nhập thông tin kết nối](https://github.com/user-attachments/assets/aec0f53e-7f86-4b9a-8d1a-bde37219955e)
+
+---
+
+### 🔹 Bước 5: Tạo database và import dữ liệu
+
+- Chuột phải vào connection → `Create database`
+- Tiếp theo chọn **Tools** → **Execute Script**
+
+![Tạo database](https://github.com/user-attachments/assets/f48121ef-ed44-4027-a1f2-32b31c9edbdb)
+
+---
+
+### 🔹 Bước 6: Import dữ liệu từ tệp backup
+
+- Chọn file backup `dump-KLTN-202505200459.sql`
+- Nhấn `Start` để bắt đầu import dữ liệu
+
+![Import dữ liệu](https://github.com/user-attachments/assets/1d376f54-9dc7-4928-9883-642ab30d0eb8)
+
+---
+
+### 🔹 Bước 7: Mở giao diện SQL Editor
+
+- Chuột phải vào database vừa import → chọn **SQL Editor** → **Open SQL Script**
+
+![SQL Editor](https://github.com/user-attachments/assets/d7a9654a-66de-45b2-9bbe-3be53182ccab)
+
+---
+
+### 🔹 Bước 8: Chạy truy vấn kiểm tra
+
+Thử truy vấn để tìm đường đi an toàn giữa hai điểm:
+
+```sql
 SELECT * FROM wrk_fromatob_safe(
-15.831428880692721, 108.32606507203573,  
-15.595592001094285, 108.45862729258717,
-false);
+    15.831428880692721, 108.32606507203573,  
+    15.595592001094285, 108.45862729258717,
+    false
+);
+
+## 🚀 Video demo trực quan hóa trên thiết bị di động
+
+https://github.com/user-attachments/assets/a9bece80-496b-4825-a2be-9a1895fb506c
+
